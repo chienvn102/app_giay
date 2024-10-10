@@ -16,4 +16,11 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Dang nhap 234" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Dang Ky" />
 </LinearLayout>
