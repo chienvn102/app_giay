@@ -1,0 +1,60 @@
+YourApp/
+│
+├── model/                       // Chứa các lớp mô hình dữ liệu
+│   ├── Product.java             // Lớp đại diện cho sản phẩm
+│   ├── User.java                // Lớp đại diện cho người dùng
+│   ├── Order.java               // Lớp đại diện cho đơn hàng
+│   └── CartItem.java            // Lớp đại diện cho mục trong giỏ hàng
+│
+├── dao/                         // Chứa các lớp DAO để xử lý truy cập dữ liệu
+│   ├── ProductDAO.java          // DAO cho sản phẩm
+│   └── UserDAO.java             // DAO cho người dùng
+│
+├── view/                        // Chứa các lớp giao diện người dùng
+│   ├── activities/              // Các Activity
+│   │   ├── ProductListActivity.java      // Hiển thị danh sách sản phẩm
+│   │   ├── ProductDetailActivity.java   // Chi tiết sản phẩm
+│   │   ├── CartActivity.java            // Quản lý giỏ hàng
+│   │   └── LoginActivity.java           // Đăng nhập
+│   │
+│   └── fragments/               // Các Fragment (nếu cần)
+│       ├── ProductListFragment.java
+│       └── CartFragment.java
+│
+├── adapter/                     // Chứa các Adapter cho RecyclerView/ListView
+│   ├── ProductAdapter.java       // Adapter cho danh sách sản phẩm
+│   └── CartAdapter.java          // Adapter cho giỏ hàng
+│
+├── service/                     // Chứa các dịch vụ (nếu có)
+│   └── ApiService.java          // Gọi các API từ PHP
+│
+├── utils/                       // Các tiện ích chung
+│   ├── NetworkUtils.java        // Kiểm tra kết nối mạng
+│   └── Constants.java           // Các hằng số chung
+│
+├── database/                    // Quản lý kết nối cơ sở dữ liệu
+│   └── DatabaseHelper.java      // Lớp kết nối MySQL
+│
+└── test/                        // Chứa các bài kiểm tra (nếu có)
+    ├── ProductDAOTest.java      // Kiểm tra DAO cho sản phẩm
+    └── UserDAOTest.java         // Kiểm tra DAO cho người dùng
+Giải thích cấu trúc
+model/: Chứa các lớp mô hình dữ liệu, đại diện cho các thực thể trong ứng dụng.
+
+dao/: Chứa các lớp Data Access Object, xử lý các truy cập dữ liệu cho từng thực thể. Mỗi DAO sẽ thực hiện các thao tác CRUD cho thực thể tương ứng.
+
+view/: Chứa các lớp giao diện người dùng. Phân chia thành hai thư mục con: activities/ cho các Activity và fragments/ cho các Fragment (nếu bạn sử dụng).
+
+adapter/: Chứa các lớp Adapter để liên kết dữ liệu với các giao diện như RecyclerView hoặc ListView.
+
+service/: Chứa các lớp dịch vụ (nếu bạn có), ví dụ như gọi API từ PHP.
+
+utils/: Chứa các lớp tiện ích chung mà có thể được sử dụng ở nhiều nơi trong ứng dụng, như kiểm tra kết nối mạng hoặc các hằng số.
+
+database/: Chứa lớp DatabaseHelper, quản lý kết nối đến cơ sở dữ liệu MySQL.
+
+test/: Chứa các bài kiểm tra đơn vị (nếu bạn thực hiện kiểm tra mã nguồn).
+
+Ghi chú
+Cấu trúc này có thể được điều chỉnh tùy thuộc vào quy mô và yêu cầu cụ thể của ứng dụng.
+Mục tiêu là giữ cho mã nguồn rõ ràng, dễ duy trì và phát triển trong tương lai.
