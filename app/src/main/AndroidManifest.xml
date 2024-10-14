@@ -13,6 +13,18 @@
         android:theme="@style/Theme.App_giay"
         tools:targetApi="31">
         <activity
+            android:name=".view.activities.MainBAActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.MainFEActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.SigninActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activities.testActivity"
             android:exported="false" />
         <activity
@@ -24,6 +36,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

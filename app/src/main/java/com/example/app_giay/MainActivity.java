@@ -1,6 +1,8 @@
 package com.example.app_giay;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,8 +10,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.app_giay.database.DatabaseHelper;
+import com.example.app_giay.view.activities.RegisterActivity;
+import com.example.app_giay.view.activities.SigninActivity;
 
+public class MainActivity extends AppCompatActivity {
+    Button btnSignin, btnRegister;
+    DatabaseHelper dbHelper = new DatabaseHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,5 +27,20 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        btnSignin = findViewById(R.id.btnSignin);
+        btnSignin.setOnClickListener(v -> signin());  // Gọi hàm signin khi nhấn nút
+        btnRegister = findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(v -> register());  // Gọi hàm register khi nhấn nút
     }
+
+    public void signin() {
+        Intent intent = new Intent(this, SigninActivity.class);
+        startActivity(intent);
+    }
+
+    public void register() {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
 }
