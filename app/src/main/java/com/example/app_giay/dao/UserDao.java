@@ -38,13 +38,18 @@ public class UserDao {
 
     public boolean checkLogin(String username, String password) {
         String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-        String[] args = {username, password}; // Thay đổi kiểu thành String[]
-
+        String[] args = {username, password};
         Cursor cursor = dbHelper.getReadableDatabase().rawQuery(sql, args);
-
-        boolean exists = cursor.getCount() > 0; // Kiểm tra số lượng bản ghi
-        cursor.close(); // Đảm bảo đóng con trỏ
-
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
+        return exists;
+    }
+    public boolean checkUsernameExists(String username) {
+        String sql = "SELECT * FROM users WHERE username = ?";
+        String[] args = {username};
+        Cursor cursor = dbHelper.getReadableDatabase().rawQuery(sql, args);
+        boolean exists = cursor.getCount() > 0;
+        cursor.close();
         return exists;
     }
 }
