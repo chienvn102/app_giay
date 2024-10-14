@@ -142,7 +142,7 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button4"
+            android:id="@+id/btnCreateAccount"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -155,7 +155,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button5"
+            android:id="@+id/btnSignIn"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -166,7 +166,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button4" />
+            app:layout_constraintTop_toBottomOf="@+id/btnCreateAccount" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
