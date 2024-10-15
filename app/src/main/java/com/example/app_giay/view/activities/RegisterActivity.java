@@ -1,9 +1,11 @@
 package com.example.app_giay.view.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,9 +20,10 @@ import com.example.app_giay.model.User;
 
 public class RegisterActivity extends AppCompatActivity {
     ImageButton imgBtnBack;
-    Button btnCreate;
+    Button btnCreate, btnSignIn;
     EditText edtUsername, edtPassword, edtYourname;
     UserDao userDao = new UserDao(this);
+    RoleDao roleDao = new RoleDao(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +40,26 @@ public class RegisterActivity extends AppCompatActivity {
         imgBtnBack = findViewById(R.id.imgBtnBack);
         imgBtnBack.setOnClickListener(v -> finish());
         btnCreate = findViewById(R.id.btnCreateAccount);
-        btnCreate.setOnClickListener(v -> {
-            addUser();
-            setResult(RESULT_OK);
+        btnSignIn = findViewById(R.id.btnSignIn);
+        btnSignIn.setOnClickListener(v -> {
+            Intent intent = new Intent(this, SigninActivity.class);
+            startActivity(intent);
             finish();
         });
+        btnCreate.setOnClickListener(v -> {
+            if (checkUsername(edtUsername.getText().toString())) {
+                Toast.makeText(getApplicationContext(), "Tên đăng nhập đã tồn tại", Toast.LENGTH_SHORT).show();
+            } else {
+                addUser();
+                Toast.makeText(getApplicationContext(), "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, SigninActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+    public boolean checkUsername(String username) {
+        return userDao.checkUsernameExists(username);
     }
     public void addUser() {
         String username = edtUsername.getText().toString();

@@ -1,4 +1,4 @@
-package com.example.app_giay.view.activities;
+package com.example.app_giay.view.activities.Ba.sanPham;
 
 import android.os.Bundle;
 
@@ -10,13 +10,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.app_giay.R;
 
-public class MainBAActivity extends AppCompatActivity {
+public class sanphamActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main_baactivity);
+        setContentView(R.layout.activity_sanpham);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
