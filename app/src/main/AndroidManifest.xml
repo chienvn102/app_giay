@@ -31,6 +31,9 @@
             android:name=".view.activities.Ba.nhaSanXuat.nsxActivity"
             android:exported="false" />
         <activity
+            android:name=".view.activities.Ba.nhaSanXuat.addNsxActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activities.Ba.loaiSanPham.lspActivity"
             android:exported="false" />
         <activity
