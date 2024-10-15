@@ -13,10 +13,22 @@
         android:theme="@style/Theme.App_giay"
         tools:targetApi="31">
         <activity
-            android:name=".view.activities.MainBAActivity"
+            android:name=".view.activities.Ba.loaiSanPham.addLspActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activities.MainFEActivity"
+            android:name=".view.activities.Ba.sanPham.sanphamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.Ba.nhaSanXuat.nsxActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.Ba.loaiSanPham.lspActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.Ba.MainBAActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.Fe.MainFEActivity"
             android:exported="false" />
         <activity
             android:name=".view.activities.RegisterActivity"

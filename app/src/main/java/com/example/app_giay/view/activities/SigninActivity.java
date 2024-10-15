@@ -2,7 +2,6 @@ package com.example.app_giay.view.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -16,7 +15,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.app_giay.R;
 import com.example.app_giay.dao.UserDao;
-import com.example.app_giay.model.User;
+import com.example.app_giay.view.activities.Ba.MainBAActivity;
+import com.example.app_giay.view.activities.Fe.MainFEActivity;
 
 public class SigninActivity extends AppCompatActivity {
     ImageButton imgBtnBack;
@@ -46,8 +46,6 @@ public class SigninActivity extends AppCompatActivity {
 
                 int id = userDao.getRoleId(username);
                 if (id != -1) { // Kiểm tra nếu role_id hợp lệ
-                    Toast.makeText(getApplicationContext(), "id: " + id, Toast.LENGTH_SHORT).show();
-                    // Chuyển hướng đến Activity tương ứng dựa trên role_id
                     Intent intent;
                     if (id == 1) {
                         intent = new Intent(SigninActivity.this, MainBAActivity.class);
