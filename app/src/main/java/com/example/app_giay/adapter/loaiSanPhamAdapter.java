@@ -1,13 +1,11 @@
 package com.example.app_giay.adapter;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +14,8 @@ import android.widget.Toast;
 import com.example.app_giay.R;
 import com.example.app_giay.dao.loaiSanPhamDao;
 import com.example.app_giay.model.loaiSanPham;
-import com.example.app_giay.view.activities.Ba.loaiSanPham.updateLspActivity;
+import com.example.app_giay.view.activities.Ba.loaiSanPham.editLspActivity;
+import com.example.app_giay.view.activities.Ba.loaiSanPham.lspActivity;
 
 import java.util.ArrayList;
 
@@ -73,12 +72,15 @@ public class loaiSanPhamAdapter extends ArrayAdapter<loaiSanPham> {
         btnUpdate.setOnClickListener(v -> {
             // Hiển thị thông báo Toast
             Toast.makeText(context, "Cập nhật " + loaiSanPham.getLsp_ten(), Toast.LENGTH_SHORT).show();
-
-            // Chuyển sang trang UpdateLspActivity để sửa sản phẩm
-            Intent intent = new Intent(context, updateLspActivity.class);
-            intent.putExtra("loaiSanPhamId", loaiSanPham.getLsp_ma()); // Truyền ID của sản phẩm cần sửa
-            context.startActivity(intent);
+            // Tạo Intent để mở editLspActivity và truyền dữ liệu sản phẩm
+            Intent intent = new Intent(context, editLspActivity.class);
+            intent.putExtra("lsp_ma", loaiSanPham.getLsp_ma());
+            intent.putExtra("lsp_ten", loaiSanPham.getLsp_ten());
+            intent.putExtra("lsp_mota", loaiSanPham.getLsp_mota());
+            // Gọi startActivityForResult để nhận kết quả khi người dùng cập nhật sản phẩm
+            ((lspActivity) context).startActivityForResult(intent, lspActivity.REQUEST_CODE_UPDATE_LSP);
         });
+
         return convertView;
 
     }

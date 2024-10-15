@@ -19,6 +19,7 @@ import com.example.app_giay.model.loaiSanPham;
 import java.util.ArrayList;
 
 public class lspActivity extends AppCompatActivity {
+    public static final int REQUEST_CODE_UPDATE_LSP = 2;
     private static final int REQUEST_CODE_ADD_LSP = 1;  // Mã request để nhận kết quả từ addLspActivity
     ImageButton imgbtnBack, imgbtnAdd;
     ListView lvLsp;
@@ -68,9 +69,10 @@ public class lspActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_ADD_LSP && resultCode == RESULT_OK) {
-            // Khi loại sản phẩm mới đã được thêm, gọi lại loadData để cập nhật ListView
-            loadData();
+        if (requestCode == REQUEST_CODE_ADD_LSP || requestCode == REQUEST_CODE_UPDATE_LSP) {
+            if (resultCode == RESULT_OK) {
+                loadData();
+            }
         }
     }
 }
