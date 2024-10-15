@@ -1,5 +1,6 @@
 package com.example.app_giay.adapter;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -70,7 +71,13 @@ public class loaiSanPhamAdapter extends ArrayAdapter<loaiSanPham> {
 
 
         btnUpdate.setOnClickListener(v -> {
+            // Hiển thị thông báo Toast
             Toast.makeText(context, "Cập nhật " + loaiSanPham.getLsp_ten(), Toast.LENGTH_SHORT).show();
+
+            // Chuyển sang trang UpdateLspActivity để sửa sản phẩm
+            Intent intent = new Intent(context, updateLspActivity.class);
+            intent.putExtra("loaiSanPhamId", loaiSanPham.getLsp_ma()); // Truyền ID của sản phẩm cần sửa
+            context.startActivity(intent);
         });
         return convertView;
 
@@ -80,4 +87,5 @@ public class loaiSanPhamAdapter extends ArrayAdapter<loaiSanPham> {
         loaiSanPhamDao loaiSanPhamDao = new loaiSanPhamDao(context);
         loaiSanPhamDao.deleteLoaiSanPham(lspMa);
     }
+
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app_giay.R;
+import com.example.app_giay.dao.loaiSanPhamDao;
 
 public class updateLspActivity extends AppCompatActivity {
     @Override
@@ -17,5 +18,9 @@ public class updateLspActivity extends AppCompatActivity {
 
         // Dựa vào loaiSanPhamId để lấy thông tin sản phẩm từ cơ sở dữ liệu hoặc nơi lưu trữ dữ liệu
         // Hiển thị thông tin sản phẩm cho người dùng có thể sửa
+    }
+    private void updateLoaiSanPham(int lspMa, String newTen, String newMoTa) {
+        loaiSanPhamDao loaiSanPhamDao = new loaiSanPhamDao(this);
+        loaiSanPhamDao.updateLoaiSanPham(lspMa, newTen, newMoTa);
     }
 }
