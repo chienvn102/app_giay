@@ -13,9 +13,17 @@
         android:theme="@style/Theme.App_giay"
         tools:targetApi="31">
         <activity
+            android:name=".view.activities.Ba.loaiSanPham.editLspActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.Ba.loaiSanPham.testActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.Ba.loaiSanPham.updateLsp2Activity"
+            android:exported="false" />
+        <activity
             android:name=".view.activities.Ba.loaiSanPham.addLspActivity"
             android:exported="false" />
-
         <activity
             android:name=".view.activities.Ba.sanPham.sanphamActivity"
             android:exported="false" />
@@ -49,7 +57,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
 
         <meta-data
             android:name="preloaded_fonts"
