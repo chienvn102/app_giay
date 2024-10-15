@@ -17,4 +17,6 @@ public class RoleDao {
         Object[] args = {roleName};
         dbHelper.getWritableDatabase().execSQL(sql, args);
     }
+
+
 }

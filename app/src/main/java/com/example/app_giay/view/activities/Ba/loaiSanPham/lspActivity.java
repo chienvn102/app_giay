@@ -47,6 +47,7 @@ public class lspActivity extends AppCompatActivity {
         data = dao.getAllLoaiSanPham();
         adapter = new loaiSanPhamAdapter(this, R.layout.layout_list_lsp, data);
         lvLsp.setAdapter(adapter);
+
     }
 
 

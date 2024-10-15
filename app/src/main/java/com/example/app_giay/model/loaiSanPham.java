@@ -40,4 +40,5 @@ public class loaiSanPham {
     public void setLsp_mota(String lsp_mota) {
         this.lsp_mota = lsp_mota;
     }
+
 }
