@@ -10,6 +10,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.app_giay.dao.RoleDao;
+import com.example.app_giay.dao.UserDao;
 import com.example.app_giay.database.DatabaseHelper;
 import com.example.app_giay.view.activities.RegisterActivity;
 import com.example.app_giay.view.activities.SigninActivity;

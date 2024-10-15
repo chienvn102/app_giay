@@ -44,6 +44,7 @@ public class addLspActivity extends AppCompatActivity {
             String lsp_ten = edtTenSanPham.getText().toString();
             String lsp_mota = edtMota.getText().toString();
             loaiSanPhamDao.addLoaiSanPham(lsp_ten, lsp_mota);
+            setResult(RESULT_OK);
             finish();
         });
     }
