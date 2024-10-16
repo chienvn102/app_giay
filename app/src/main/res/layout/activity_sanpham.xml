@@ -52,9 +52,9 @@
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
         <ListView
-            android:id="@+id/lvSp"
+            android:id="@+id/lvSanPham"
             android:layout_width="417dp"
-            android:layout_height="527dp"
+            android:layout_height="450dp"
             android:layout_marginTop="44dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -65,12 +65,11 @@
             android:id="@+id/imgbtnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
             android:background="@drawable/bgr_btn_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lvSp"
+            app:layout_constraintTop_toBottomOf="@+id/lvSanPham"
             app:srcCompat="@drawable/baseline_add_24"
             tools:ignore="SpeakableTextPresentCheck" />
 
