@@ -30,6 +30,7 @@ public class editNsxActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_edit_nsx); // Cập nhật layout resource
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -42,6 +43,7 @@ public class editNsxActivity extends AppCompatActivity {
         imgbtnBack.setOnClickListener(v -> finish());
         btnCancel = findViewById(R.id.btnCancel);
         btnCancel.setOnClickListener(view -> finish());
+        edtTenNsx.setText(getIntent().getStringExtra("nsx_ten"));
 
         // Xử lý sự kiện khi nhấn nút "Lưu"
         btnSave.setOnClickListener(view -> {

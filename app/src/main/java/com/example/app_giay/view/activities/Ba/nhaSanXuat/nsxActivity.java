@@ -99,7 +99,6 @@ public class nsxActivity extends AppCompatActivity { // Rename class to nsxActiv
 
     // Phương thức lọc dữ liệu theo mã sản phẩm
     public void filterByMaNhaSanXuat(String query) {
-        query = query.toLowerCase().trim();
         data.clear();  // Xóa dữ liệu hiện tại trước khi lọc
 
         if (query.isEmpty()) {
