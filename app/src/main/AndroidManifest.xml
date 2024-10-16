@@ -28,9 +28,7 @@
         <activity
             android:name=".view.activities.Ba.sanPham.sanphamActivity"
             android:exported="false" />
-        <activity
-            android:name=".view.activities.Ba.nhaSanXuat.nsxActivity"
-            android:exported="false" />
+        <activity android:name=".view.activities.Ba.nhaSanXuat.nsxActivity" />
         <activity
             android:name=".view.activities.Ba.nhaSanXuat.addNsxActivity"
             android:exported="false" />
