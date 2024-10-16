@@ -11,9 +11,11 @@ import java.util.ArrayList;
 public class nhaSanXuatDao {
     private DatabaseHelper nhaSanXuatdb;
 
+
     public nhaSanXuatDao(Context context) {
         nhaSanXuatdb = new DatabaseHelper(context);
     }
+
 
     public nhaSanXuat getNhaSanXuatById(int nsx_ma) {
         nhaSanXuat nhaSanXuat = null;

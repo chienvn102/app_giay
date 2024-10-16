@@ -40,14 +40,14 @@ public class nsxActivity extends AppCompatActivity { // Rename class to nsxActiv
 
         imgbtnBack = findViewById(R.id.imgbtnBack);
         imgbtnBack.setOnClickListener(v -> finish());
-        lvNsx = findViewById(R.id.lvSp); // Update ListView ID
+        lvNsx = findViewById(R.id.lvNsx); // Update ListView ID
         imgbtnAdd = findViewById(R.id.imgbtnAdd);
         imgbtnAdd.setOnClickListener(v -> {
             Intent intent = new Intent(nsxActivity.this, addNsxActivity.class); // Update intent target
             startActivity(intent);
         });
 
-        data = dao.getAllNhaSanXuat(); // Update data variable to dao.getAllNhaSanXuat();
+        data = dao.getAllNhaSanXuat();
         adapter = new nhaSanXuatAdapter(this, R.layout.layout_list_nsx, data);
         lvNsx.setAdapter(adapter);
     }
