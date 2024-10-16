@@ -1,9 +1,11 @@
 package com.example.app_giay.view.activities.Ba.nhaSanXuat; // Update the package path
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.app_giay.R;
 import com.example.app_giay.dao.loaiSanPhamDao;
 import com.example.app_giay.dao.nhaSanXuatDao; // Update DAO import
+import com.example.app_giay.view.activities.Ba.loaiSanPham.addLspActivity;
 
 public class addNsxActivity extends AppCompatActivity { // Rename class to addNsxActivity
     Button btnSave, btnCancel;
@@ -44,9 +47,24 @@ public class addNsxActivity extends AppCompatActivity { // Rename class to addNs
         });
 
         btnSave.setOnClickListener(view -> {
-            String nsx_ten = edtTenNhaSanXuat.getText().toString(); // Update variable name
-            nhaSanXuatDao.addNhaSanXuat(nsx_ten); // Update method call
+            String nsx_ten = edtTenNhaSanXuat.getText().toString().trim();
+
+            // Kiểm tra nếu trường tên sản phẩm hoặc mô tả bị để trống
+            if (TextUtils.isEmpty(nsx_ten)) {
+                edtTenNhaSanXuat.setError("Tên nhà sản xuất không được để trống");
+                return;
+            }
+
+            // Thêm nhà sản xuất vào cơ sở dữ liệu
+            nhaSanXuatDao.addNhaSanXuat(nsx_ten);
+
+            // Hiển thị thông báo thành công
+            Toast.makeText(addNsxActivity.this, "Đã thêm nhà sản xuất thành công!", Toast.LENGTH_SHORT).show();
+
+            // Trả về kết quả thành công và đóng activity
+            setResult(RESULT_OK);
             finish();
         });
+
     }
 }
