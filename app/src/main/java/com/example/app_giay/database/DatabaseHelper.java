@@ -35,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "sp_soluong INTEGER," +
                 "lsp_ma INTEGER," +
                 "nsx_ma INTEGER," +
-                "sp_hinhanh NVARCHAR(200)," +
+                "sp_hinhanh BLOB," +
                 "sp_mota NVARCHAR(200)," +
                 "sp_doituong NVARCHAR(50)," +
                 "FOREIGN KEY (lsp_ma) REFERENCES loaisanpham(lsp_ma)," +
