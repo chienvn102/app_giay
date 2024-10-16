@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,8 +26,10 @@ public class lspActivity extends AppCompatActivity {
     ImageButton imgbtnBack, imgbtnAdd;
     ListView lvLsp;
     ArrayList<loaiSanPham> data = new ArrayList<>();
+    ArrayList<loaiSanPham> originalData = new ArrayList<>();  // Dữ liệu gốc để tìm kiếm
     loaiSanPhamAdapter adapter;
     loaiSanPhamDao dao = new loaiSanPhamDao(this);
+    SearchView searchView;  // SearchView để thực hiện tìm kiếm
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class lspActivity extends AppCompatActivity {
 
         lvLsp = findViewById(R.id.lvLsp);
         imgbtnAdd = findViewById(R.id.imgbtnAdd);
+        searchView = findViewById(R.id.searchView);  // Ánh xạ SearchView
 
         // Xử lý sự kiện khi bấm nút thêm loại sản phẩm
         imgbtnAdd.setOnClickListener(v -> {
@@ -56,24 +60,62 @@ public class lspActivity extends AppCompatActivity {
 
         // Tải dữ liệu lên ListView
         loadData();
+
+        // Xử lý sự kiện tìm kiếm với SearchView
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Tìm kiếm khi người dùng nhấn "Enter"
+                filterByMaSanPham(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Tìm kiếm khi người dùng nhập từ khóa
+                filterByMaSanPham(newText);
+                return false;
+            }
+        });
     }
 
     // Hàm để tải dữ liệu từ cơ sở dữ liệu và hiển thị trên ListView
     public void loadData() {
-        data = dao.getAllLoaiSanPham();
+        originalData = dao.getAllLoaiSanPham();  // Lấy toàn bộ dữ liệu gốc từ database
+        data = new ArrayList<>(originalData);  // Sao chép dữ liệu vào danh sách hiển thị
         adapter = new loaiSanPhamAdapter(this, R.layout.layout_list_lsp, data);
         lvLsp.setAdapter(adapter);
-
     }
 
-    // Phương thức nhận kết quả từ addLspActivity
+    // Phương thức nhận kết quả từ addLspActivity hoặc editLspActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_ADD_LSP || requestCode == REQUEST_CODE_UPDATE_LSP) {
             if (resultCode == RESULT_OK) {
-                loadData();
+                loadData();  // Cập nhật lại dữ liệu sau khi thêm hoặc chỉnh sửa
             }
         }
+    }
+
+    // Phương thức lọc dữ liệu theo mã sản phẩm
+    public void filterByMaSanPham(String query) {
+        query = query.toLowerCase().trim();
+        data.clear();  // Xóa dữ liệu hiện tại trước khi lọc
+
+        if (query.isEmpty()) {
+            // Nếu không có từ khóa tìm kiếm, hiển thị lại toàn bộ dữ liệu gốc
+            data.addAll(originalData);
+        } else {
+            // Lọc danh sách theo mã sản phẩm
+            for (loaiSanPham item : originalData) {
+                if (String.valueOf(item.getLsp_ten()).contains(query)) {
+                    data.add(item);
+                }
+            }
+        }
+
+        // Cập nhật lại giao diện sau khi lọc dữ liệu
+        adapter.notifyDataSetChanged();
     }
 }
