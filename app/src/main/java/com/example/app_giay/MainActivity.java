@@ -18,9 +18,10 @@ import com.example.app_giay.view.activities.SigninActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button btnSignin, btnRegister;
+//    RoleDao roleDao = new RoleDao(this); // Tạo đối tượng RoleDao
+//    UserDao userDao = new UserDao(this);
+
     DatabaseHelper dbHelper = new DatabaseHelper(this);
-    RoleDao roleDao = new RoleDao(this);
-    UserDao userDao = new UserDao(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +39,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signin() {
-        Intent intent = new Intent(this, SigninActivity.class);
-        startActivity(intent);
-//        roleDao.addRole("ADMIN");
-//        roleDao.addRole("USER");
-//        userDao.addUser("admin", "admin", 1, "admin");
-
+       Intent intent = new Intent(this, SigninActivity.class);
+      startActivity(intent);
+//          roleDao.addRole("User");
+//        userDao.addUser("admin", "admin", 1, "Admin");
     }
 
     public void register() {
