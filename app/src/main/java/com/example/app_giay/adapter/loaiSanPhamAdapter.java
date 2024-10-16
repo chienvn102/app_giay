@@ -74,4 +74,21 @@ public class loaiSanPhamAdapter extends ArrayAdapter<loaiSanPham> {
         loaiSanPhamDao loaiSanPhamDao = new loaiSanPhamDao(context);
         loaiSanPhamDao.deleteLoaiSanPham(lspMa);
     }
+    public void filterByMaSanPham(String query) {
+        ArrayList<loaiSanPham> filteredData = new ArrayList<>();
+        if (query.isEmpty()) {
+            filteredData.addAll(data); // Hiển thị tất cả sản phẩm nếu không có tìm kiếm
+        } else {
+            for (loaiSanPham item : data) {
+                if (String.valueOf(item.getLsp_ten()).contains(query)) {
+                    filteredData.add(item);
+                }
+            }
+        }
+        // Cập nhật danh sách hiển thị
+        data.clear();
+        data.addAll(filteredData);
+        notifyDataSetChanged();
+    }
+
 }
