@@ -22,6 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTableNhaSanXuat = "CREATE TABLE nhasanxuat (" +
                 "nsx_ma INTEGER PRIMARY KEY," +
                 "nsx_ten NVARCHAR(50)" +
+
                 ");";
         db.execSQL(createTableNhaSanXuat);
 
