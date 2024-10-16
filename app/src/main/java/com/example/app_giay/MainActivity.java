@@ -18,8 +18,8 @@ import com.example.app_giay.view.activities.SigninActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button btnSignin, btnRegister;
-//    RoleDao roleDao = new RoleDao(this); // Tạo đối tượng RoleDao
-//    UserDao userDao = new UserDao(this);
+//        RoleDao roleDao = new RoleDao(this); // Tạo đối tượng RoleDao
+
 
     DatabaseHelper dbHelper = new DatabaseHelper(this);
     @Override
@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
     public void signin() {
        Intent intent = new Intent(this, SigninActivity.class);
       startActivity(intent);
-//          roleDao.addRole("User");
-//        userDao.addUser("admin", "admin", 1, "Admin");
+//         roleDao.addRole("User");
+
     }
 
     public void register() {
