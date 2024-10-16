@@ -10,6 +10,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.app_giay.dao.RoleDao;
+import com.example.app_giay.dao.UserDao;
 import com.example.app_giay.database.DatabaseHelper;
 import com.example.app_giay.view.activities.RegisterActivity;
 import com.example.app_giay.view.activities.SigninActivity;
@@ -17,6 +19,8 @@ import com.example.app_giay.view.activities.SigninActivity;
 public class MainActivity extends AppCompatActivity {
     Button btnSignin, btnRegister;
     DatabaseHelper dbHelper = new DatabaseHelper(this);
+    RoleDao roleDao = new RoleDao(this);
+    UserDao userDao = new UserDao(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
     public void signin() {
         Intent intent = new Intent(this, SigninActivity.class);
         startActivity(intent);
+//        roleDao.addRole("ADMIN");
+//        roleDao.addRole("USER");
+//        userDao.addUser("admin", "admin", 1, "admin");
+
     }
 
     public void register() {

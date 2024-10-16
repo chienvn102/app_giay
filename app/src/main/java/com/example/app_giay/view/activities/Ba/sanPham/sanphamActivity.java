@@ -1,6 +1,8 @@
 package com.example.app_giay.view.activities.Ba.sanPham;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.app_giay.R;
 
 public class sanphamActivity extends AppCompatActivity {
-
+    ImageButton btnAdd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +23,11 @@ public class sanphamActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        btnAdd = findViewById(R.id.imgbtnAdd);
+        btnAdd.setOnClickListener(v -> {
+            Intent intent = new Intent(this, addSanPhamActivity.class);
+            startActivity(intent);
         });
     }
 }

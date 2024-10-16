@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class lspActivity extends AppCompatActivity {
     public static final int REQUEST_CODE_UPDATE_LSP = 2;
     private static final int REQUEST_CODE_ADD_LSP = 1;  // Mã request để nhận kết quả từ addLspActivity
+    private static final int REQUEST_CODE_EDIT_LSP = 2;  // Mã request để nhận kết quả từ editLspActivity
     ImageButton imgbtnBack, imgbtnAdd;
     ListView lvLsp;
     ArrayList<loaiSanPham> data = new ArrayList<>();
