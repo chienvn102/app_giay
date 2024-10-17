@@ -6,10 +6,13 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,8 +22,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.app_giay.R;
 import com.example.app_giay.dao.SanPhamDao;
+import com.example.app_giay.dao.loaiSanPhamDao;
+import com.example.app_giay.dao.nhaSanXuatDao;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 
 public class addSanPhamActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1; // Mã yêu cầu để mở thư viện
@@ -29,6 +35,11 @@ public class addSanPhamActivity extends AppCompatActivity {
     ImageView imgSanPham;
     EditText edtTenSanPham, edtGia, edtNgayCapNhat, edtSoLuong, edtMaSanPham, edtMaNhaSanXuat, edtMoTa, edtDoiTuong;
     SanPhamDao dao = new SanPhamDao(this);
+    loaiSanPhamDao loaiSanPhamDao = new loaiSanPhamDao(this);
+    nhaSanXuatDao nhaSanXuatDao = new nhaSanXuatDao(this);
+    Spinner spinnerLoaiSanPham, spinnerNhaSanXuat;
+    ArrayList<String> listLoaiSanPham = new ArrayList<>();
+    ArrayList<String> listNhaSanXuat = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +52,7 @@ public class addSanPhamActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Khởi tạo các thành phần giao diện
         btnSave = findViewById(R.id.btnSave);
         btnCancel = findViewById(R.id.btnCancel);
         btnOpen = findViewById(R.id.imageButton);
@@ -50,22 +62,75 @@ public class addSanPhamActivity extends AppCompatActivity {
         edtGia = findViewById(R.id.edtGiaSanPham);
         edtNgayCapNhat = findViewById(R.id.edtNgayCapNhat);
         edtSoLuong = findViewById(R.id.edtSoLuongSanPham);
-        edtMaSanPham = findViewById(R.id.edtMaLoaiSanPham);
-        edtMaNhaSanXuat = findViewById(R.id.edtMaNSX);
+        spinnerLoaiSanPham = findViewById(R.id.spinnerLoaiSanPham);
+        spinnerNhaSanXuat = findViewById(R.id.spinnerNhaSanXuat);
         edtMoTa = findViewById(R.id.edtMoTaSanPham);
         edtDoiTuong = findViewById(R.id.edtDoiTuongSanPham);
 
         btnBack.setOnClickListener(v -> finish());
         btnCancel.setOnClickListener(v -> finish());
 
+        // Lấy danh sách loại sản phẩm
+        listLoaiSanPham = loaiSanPhamDao.getAllTenLoaiSanPham();
+
+        // Thêm mục "Chọn loại sản phẩm" vào đầu danh sách
+        listLoaiSanPham.add(0, "Chọn loại sản phẩm");
+
+        // Tạo adapter cho Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listLoaiSanPham);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLoaiSanPham.setAdapter(adapter);
+
+        // Tự động chọn mục đầu tiên (mục không có gì)
+        spinnerLoaiSanPham.setSelection(0);
+
+
+        // Lấy danh sách nha sửa
+        listNhaSanXuat = nhaSanXuatDao.getAllTenNhaSanXuat();
+
+        // Thêm mục "Chọn nha sửa" vào đầu danh sách
+        listNhaSanXuat.add(0, "Chọn nha sửa");
+
+        // Tạo adapter cho Spinner
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listNhaSanXuat);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerNhaSanXuat.setAdapter(adapter2);
+
+        // Tự động chọn mục đầu tiên (một)
+        spinnerNhaSanXuat.setSelection(0);
+
+
         btnOpen.setOnClickListener(v -> openImageChooser());
         btnSave.setOnClickListener(v -> {
+            // Lấy vị trí đã chọn từ Spinner
+            int selectedPosition = spinnerLoaiSanPham.getSelectedItemPosition();
+
+            // Kiểm tra nếu vị trí đã chọn là 0 (mục "Chọn loại sản phẩm")
+            if (selectedPosition == 0) {
+                // Hiển thị thông báo lỗi và dừng lại
+                Toast.makeText(this, "Vui lòng chọn loại sản phẩm hợp lệ", Toast.LENGTH_SHORT).show();
+                return; // Dừng không cho tiếp tục lưu sản phẩm
+            }
+
+            // Nếu đã chọn loại sản phẩm, lấy tên loại sản phẩm từ Spinner
+            String lsp_ten = spinnerLoaiSanPham.getSelectedItem().toString();
+
+            // Lấy mã loại sản phẩm dựa trên tên loại sản phẩm từ DAO
+            int maSanPham = loaiSanPhamDao.getLoaiSanPhamMaByTen(lsp_ten);
+
+            int selectedPosition2 = spinnerNhaSanXuat.getSelectedItemPosition();
+            if (selectedPosition2 == 0) {
+                Toast.makeText(this, "Vui chọn nha sửa", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            String nsx_ten = spinnerNhaSanXuat.getSelectedItem().toString();
+            int maNhaSanXuat = nhaSanXuatDao.getNhaSanXuatMaByTen(nsx_ten);
+
+            // Tiếp tục lấy thông tin sản phẩm
             String tenSanPham = edtTenSanPham.getText().toString();
             double gia = Double.parseDouble(edtGia.getText().toString());
             String ngayCapNhat = edtNgayCapNhat.getText().toString();
             int soLuong = Integer.parseInt(edtSoLuong.getText().toString());
-            int maSanPham = Integer.parseInt(edtMaSanPham.getText().toString());
-            int maNhaSanXuat = Integer.parseInt(edtMaNhaSanXuat.getText().toString());
             String moTa = edtMoTa.getText().toString();
             String doiTuong = edtDoiTuong.getText().toString();
 
@@ -75,8 +140,12 @@ public class addSanPhamActivity extends AppCompatActivity {
 
             // Gọi phương thức thêm sản phẩm
             dao.addSanPham(tenSanPham, gia, ngayCapNhat, soLuong, maSanPham, maNhaSanXuat, imageData, moTa, doiTuong);
+
+            // Đóng màn hình hiện tại
+            setResult(RESULT_OK);
             finish();
         });
+
     }
 
     private void openImageChooser() {

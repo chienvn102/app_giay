@@ -81,4 +81,32 @@ public class nhaSanXuatDao {
         }
         return data;
     }
+
+    public ArrayList<String> getAllTenNhaSanXuat() {
+        ArrayList<String> tenNhaSanXuatList = new ArrayList<>();
+        String sql = "SELECT nsx_ten FROM nhaSanXuat";
+        Cursor cursor = nhaSanXuatdb.getReadableDatabase().rawQuery(sql, null);
+        try {
+            while (cursor.moveToNext()) {
+                String tenNhaSanXuat = cursor.getString(0);
+                tenNhaSanXuatList.add(tenNhaSanXuat);
+            }
+        } finally {
+            cursor.close();
+        }
+        return tenNhaSanXuatList;
+    }
+    public int getNhaSanXuatMaByTen(String nsx_ten) {
+        String sql = "SELECT nsx_ma FROM nhaSanXuat WHERE nsx_ten = ?";
+        Cursor cursor = nhaSanXuatdb.getReadableDatabase().rawQuery(sql, new String[]{nsx_ten});
+        int nsx_ma = -1;
+        try {
+            if (cursor.moveToFirst()) {
+                nsx_ma = cursor.getInt(0);
+            }
+        } finally {
+            cursor.close();
+        }
+        return nsx_ma;
+    }
 }
