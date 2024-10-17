@@ -172,12 +172,11 @@
                         android:text="Mã Loại Sản Phẩm"
                         android:textSize="22sp" />
 
-                    <EditText
-                        android:id="@+id/edtMaLoaiSanPham"
+                    <Spinner
+                        android:id="@+id/spinnerLoaiSanPham"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Mã loại sản phẩm"
-                        android:inputType="number"
+                        android:layout_marginTop="10dp"
                         android:minHeight="48dp" />
                 </LinearLayout>
 
@@ -198,12 +197,11 @@
                         android:text="Mã Nhà Sản Xuất"
                         android:textSize="22sp" />
 
-                    <EditText
-                        android:id="@+id/edtMaNSX"
+                    <Spinner
+                        android:id="@+id/spinnerNhaSanXuat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Mã nhà sản xuất"
-                        android:inputType="number"
+                        android:layout_marginTop="10dp"
                         android:minHeight="48dp" />
                 </LinearLayout>
 

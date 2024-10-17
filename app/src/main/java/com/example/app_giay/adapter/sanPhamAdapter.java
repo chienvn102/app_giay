@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.app_giay.R;
 import com.example.app_giay.model.SanPham;
@@ -35,6 +37,15 @@ public class sanPhamAdapter extends ArrayAdapter<SanPham> {
         SanPham sanPham = data.get(position);
         TextView txtTen = convertView.findViewById(R.id.txtsp_ten);
         ImageView imgSanPham = convertView.findViewById(R.id.imgSanPham);
+        ImageButton btnDelete = convertView.findViewById(R.id.btnDeleteNsx);
+        ImageButton btnUpdate = convertView.findViewById(R.id.btnUpdateNsx);
+
+        btnDelete.setOnClickListener(v -> {
+            Toast.makeText(context, "Xóa " + sanPham.getSp_ten(), Toast.LENGTH_SHORT).show();
+        });
+        btnUpdate.setOnClickListener(v -> {
+            Toast.makeText(context, "Cập nhật " + sanPham.getSp_ten(), Toast.LENGTH_SHORT).show();
+        });
 
         txtTen.setText(sanPham.getSp_ten());
 

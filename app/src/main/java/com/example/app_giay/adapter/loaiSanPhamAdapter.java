@@ -83,6 +83,7 @@ public class loaiSanPhamAdapter extends ArrayAdapter<loaiSanPham> {
         return convertView;
     }
 
+
     // Phương thức xóa sản phẩm khỏi cơ sở dữ liệu
     private void deleteLoaiSanPham(int lspMa) {
         loaiSanPhamDao loaiSanPhamDao = new loaiSanPhamDao(context);

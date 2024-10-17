@@ -55,6 +55,19 @@ public class loaiSanPhamDao {
             }
         }
     }
+    public ArrayList<String> getAllTenLoaiSanPham() {
+        ArrayList<String> tenLoaiSanPhamList = new ArrayList<>();
+        String sql = "SELECT lsp_ten FROM loaiSanPham";
+        android.database.Cursor cursor = loaiSanPhamdb.getReadableDatabase().rawQuery(sql, null);
+        try {
+            while (cursor.moveToNext()) {
+                tenLoaiSanPhamList.add(cursor.getString(0));  // Chỉ lấy tên loại sản phẩm
+            }
+        } finally {
+            cursor.close();
+        }
+        return tenLoaiSanPhamList;
+    }
 
     public void updateLoaiSanPham(int lsp_ma, String lsp_ten, String lsp_mota) {
         loaiSanPhamdb.getWritableDatabase();
@@ -62,6 +75,19 @@ public class loaiSanPhamDao {
         Object[] args = {lsp_ten, lsp_mota, lsp_ma};
         loaiSanPhamdb.getWritableDatabase().execSQL(sql, args);
     }
+    public int getLoaiSanPhamMaByTen(String tenLoaiSanPham) {
+        String sql = "SELECT lsp_ma FROM loaiSanPham WHERE lsp_ten = ?";
+        Cursor cursor = loaiSanPhamdb.getReadableDatabase().rawQuery(sql, new String[]{tenLoaiSanPham});
+        try {
+            if (cursor.moveToFirst()) {
+                return cursor.getInt(0);
+            }
+        } finally {
+            cursor.close();
+        }
+        return -1; // Trả về -1 nếu không tìm thấy
+    }
+
 
     public ArrayList<loaiSanPham> getAllLoaiSanPham() {
         ArrayList<loaiSanPham> data = new ArrayList<>();
