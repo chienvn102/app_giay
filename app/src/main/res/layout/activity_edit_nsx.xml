@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activities.Ba.nhaSanXuat.addNsxActivity"> <!-- Update context -->
+    tools:context=".view.activities.Ba.nhaSanXuat.editNsxActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,8 +16,8 @@
 
         <ImageButton
             android:id="@+id/imgbtnBack"
-            android:layout_width="19dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/trongsuot"
@@ -26,15 +26,14 @@
             app:srcCompat="@drawable/baseline_keyboard_arrow_left_24"
             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/aoboshi_one"
-            android:text="Thêm mới nhà sản xuất"
-            android:textSize="28sp"
+            android:text="Cập nhật nhà sản xuất"
+            android:textSize="28dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imgbtnBack"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,8 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/textView17"
-            tools:ignore="ExtraText">
+            app:layout_constraintTop_toBottomOf="@+id/textView17">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,35 +52,25 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
-                android:orientation="vertical"
-                tools:ignore="ExtraText">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView19"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Tên nhà sản xuất"
+                    android:text="Tên Nhà Sản Xuất"
                     android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/edtTenNhaSanXuat"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Tên nhà sản xuất"
-                android:inputType="text"
-                android:minHeight="48dp"
-                tools:ignore="ExtraText" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Tên nhà sản xuất"
+                    android:inputType="text"
+                    android:minHeight="48dp" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="40dp"
-                android:orientation="vertical"/>
         </LinearLayout>
 
         <LinearLayout
@@ -107,6 +95,7 @@
                     android:background="@drawable/brn_bgr"
                     android:fontFamily="@font/aoboshi_one"
                     android:text="Lưu"
+                    android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -135,4 +124,5 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

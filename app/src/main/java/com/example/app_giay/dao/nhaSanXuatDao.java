@@ -2,6 +2,8 @@ package com.example.app_giay.dao;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.app_giay.database.DatabaseHelper;
 import com.example.app_giay.model.nhaSanXuat; // Make sure to create a model for nhaSanXuat
@@ -34,18 +36,30 @@ public class nhaSanXuatDao {
     }
 
     public void addNhaSanXuat(String nsx_ten) {
+        nhaSanXuatdb.getWritableDatabase();
         String sql = "INSERT INTO nhaSanXuat (nsx_ten) VALUES (?)";
         Object[] args = {nsx_ten};
         nhaSanXuatdb.getWritableDatabase().execSQL(sql, args);
     }
 
     public void deleteNhaSanXuat(int nsx_ma) {
-        String sql = "DELETE FROM nhaSanXuat WHERE nsx_ma = ?";
-        Object[] args = {nsx_ma};
-        nhaSanXuatdb.getWritableDatabase().execSQL(sql, args);
+        SQLiteDatabase db = null; // Khai báo biến cơ sở dữ liệu
+        try {
+            db = nhaSanXuatdb.getWritableDatabase(); // Lấy cơ sở dữ liệu
+            String sql = "DELETE FROM nhaSanXuat WHERE nsx_ma = ?";
+            db.execSQL(sql, new Object[]{nsx_ma}); // Thực hiện lệnh xóa
+        } catch (Exception e) {
+            // Xử lý ngoại lệ
+            Log.e("nhaSanXuatDao", "Lỗi khi xóa nhà sản xuất : " + e.getMessage());
+        } finally {
+            if (db != null) {
+                db.close(); // Đảm bảo đóng cơ sở dữ liệu
+            }
+        }
     }
 
     public void updateNhaSanXuat(int nsx_ma, String nsx_ten) {
+        nhaSanXuatdb.getWritableDatabase();
         String sql = "UPDATE nhaSanXuat SET nsx_ten = ? WHERE nsx_ma = ?";
         Object[] args = {nsx_ten, nsx_ma};
         nhaSanXuatdb.getWritableDatabase().execSQL(sql, args);
