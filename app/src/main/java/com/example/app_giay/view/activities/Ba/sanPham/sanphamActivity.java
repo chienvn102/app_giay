@@ -19,6 +19,8 @@ import com.example.app_giay.model.SanPham;
 import java.util.ArrayList;
 
 public class sanphamActivity extends AppCompatActivity {
+    private static final int REQUEST_CODE_ADD_SAN_PHAM = 1;
+    private static final int REQUEST_CODE_EDIT_SAN_PHAM = 2;
     ImageButton btnAdd, btnBack;
     ListView lvSanPham;
     sanPhamAdapter adapter;
@@ -39,13 +41,27 @@ public class sanphamActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.imgbtnAdd);
         lvSanPham = findViewById(R.id.lvSanPham);
 
-        data = dao.getAllSanPham();
-        adapter = new sanPhamAdapter(this, R.layout.layout_list_sp_lv, data);
-        lvSanPham.setAdapter(adapter);
+        LoadData();
 
         btnAdd.setOnClickListener(v -> {
             Intent intent = new Intent(this, addSanPhamActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE_ADD_SAN_PHAM);
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_ADD_SAN_PHAM || requestCode == REQUEST_CODE_EDIT_SAN_PHAM) {
+            if (resultCode == RESULT_OK) {
+                LoadData();
+            }
+        }
+
+    }
+    public void LoadData() {
+        data = dao.getAllSanPham();
+        adapter = new sanPhamAdapter(this, R.layout.layout_list_sp_lv, data);
+        lvSanPham.setAdapter(adapter);
     }
 }
