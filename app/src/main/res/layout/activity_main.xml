@@ -34,11 +34,11 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="250dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Welcome to Ananas Please log in to continue shopping"
+            android:text="Chào mừng đến với Ananas Vui lòng đăng nhập để tiếp tục mua sắm"
             android:textAlignment="center"
             android:textColor="#f15e2c"
             android:textSize="30sp"
@@ -51,7 +51,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:text="If you don't have an account, create one to start your shopping journey!"
+            android:text="Nếu bạn chưa có tài khoản, hãy tạo một tài khoản để bắt đầu hành trình mua sắm của bạn!"
             android:textAlignment="center"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +76,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_res_bgr"
-                android:text="Register"
+                android:text="Đăng ký"
                 android:textColor="#f15e2c"
                 android:textStyle="bold" />
 
@@ -89,7 +89,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/brn_bgr"
                 android:fontFamily="@font/roboto_bold"
-                android:text="Sign in"
+                android:text="Đăng nhập"
                 android:textColor="#fff"
                 android:textStyle="bold" />
         </LinearLayout>
