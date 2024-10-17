@@ -30,6 +30,7 @@ public class SanPham {
     public SanPham() {
         // Constructor rỗng
     }
+
     // Các phương thức getter và setter cho các thuộc tính
     public int getSp_ma() {
         return sp_ma;
@@ -87,7 +88,7 @@ public class SanPham {
         this.nsx_ma = nsx_ma;
     }
 
-    public Bitmap getSp_hinhanh() {
+    public Bitmap getSp_hinhanh() { // Sửa đổi đây
         return sp_hinhanh;
     }
 
@@ -110,5 +111,4 @@ public class SanPham {
     public void setSp_doituong(String sp_doituong) {
         this.sp_doituong = sp_doituong;
     }
-
 }
