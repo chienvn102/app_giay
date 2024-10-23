@@ -47,15 +47,20 @@ public class RegisterActivity extends AppCompatActivity {
             finish();
         });
         btnCreate.setOnClickListener(v -> {
+            String password = edtPassword.getText().toString();
             if (checkUsername(edtUsername.getText().toString())) {
                 Toast.makeText(getApplicationContext(), "Tên đăng nhập đã tồn tại", Toast.LENGTH_SHORT).show();
+            } else if (password.length() <= 8) {
+                Toast.makeText(getApplicationContext(), "Mật khẩu phải có hơn 8 ký tự", Toast.LENGTH_SHORT).show();
             } else {
+
                 addUser();
                 Toast.makeText(getApplicationContext(), "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, SigninActivity.class);
                 startActivity(intent);
                 finish();
             }
+
         });
     }
     public boolean checkUsername(String username) {

@@ -74,21 +74,4 @@ public class nhaSanXuatAdapter extends ArrayAdapter<nhaSanXuat> {
         nhaSanXuatDao nhaSanXuatDao = new nhaSanXuatDao(context);
         nhaSanXuatDao.deleteNhaSanXuat(NsxMa);
     }
-
-    public void filterByMaNhaSanXuat(String query) {
-        ArrayList<nhaSanXuat> filteredData = new ArrayList<>();
-        if (query.isEmpty()) {
-            filteredData.addAll(data); // Hiển thị tất cả sản phẩm nếu không có tìm kiếm
-        } else {
-            for (nhaSanXuat item : data) {
-                if (String.valueOf(item.getNsx_ten()).contains(query)) {
-                    filteredData.add(item);
-                }
-            }
-        }
-        // Cập nhật danh sách hiển thị
-        data.clear();
-        data.addAll(filteredData);
-        notifyDataSetChanged();
-    }
 }
