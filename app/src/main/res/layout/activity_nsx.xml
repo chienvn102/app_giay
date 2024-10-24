@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#edf2fa"
     tools:context=".view.activities.Ba.nhaSanXuat.nsxActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,17 +73,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_add_24"
             tools:ignore="SpeakableTextPresentCheck" />
-
-        <Button
-            android:id="@+id/btnDeleteAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Delete All"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.906"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lvNsx" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

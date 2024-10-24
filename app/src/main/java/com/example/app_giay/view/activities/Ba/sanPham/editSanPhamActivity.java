@@ -33,6 +33,8 @@ import java.util.Date;
 
 public class editSanPhamActivity extends AppCompatActivity {
     private EditText edtTenSanPham, edtGiaSanPham, edtSoLuong, edtMoTa, edtDoiTuong;
+    ImageButton btnBack;
+    Button btnCanel;
     private ImageView imgSanPham;
     private Spinner spinnerLoaiSanPham, spinnerNhaSanXuat;
     private loaiSanPhamDao loaiSanPhamDao;
@@ -62,6 +64,10 @@ public class editSanPhamActivity extends AppCompatActivity {
         imgSanPham = findViewById(R.id.imgSanPham);
         spinnerLoaiSanPham = findViewById(R.id.spinnerLoaiSanPham);
         spinnerNhaSanXuat = findViewById(R.id.spinnerNhaSanXuat);
+        btnBack = findViewById(R.id.imgbtnBack);
+        btnBack.setOnClickListener(v -> finish());
+        btnCanel = findViewById(R.id.btnCancel);
+        btnCanel.setOnClickListener(v -> finish());
     }
 
     private void initDao() {
@@ -157,7 +163,7 @@ public class editSanPhamActivity extends AppCompatActivity {
         String ngayCapNhat = formatter.format(date);
 
         // Validate inputs
-        if (tenSanPham.isEmpty() || giaSanPham.isEmpty() || soLuong.isEmpty()) {
+        if (tenSanPham.isEmpty() || giaSanPham.isEmpty() || soLuong.isEmpty() ) {
             Toast.makeText(this, "Vui lòng điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
             return;
         }
