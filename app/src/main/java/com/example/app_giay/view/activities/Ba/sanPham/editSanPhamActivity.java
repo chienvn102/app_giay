@@ -28,9 +28,11 @@ import com.example.app_giay.dao.nhaSanXuatDao;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class editSanPhamActivity extends AppCompatActivity {
-    private EditText edtTenSanPham, edtGiaSanPham, edtNgayCapNhat, edtSoLuong, edtMoTa, edtDoiTuong;
+    private EditText edtTenSanPham, edtGiaSanPham, edtSoLuong, edtMoTa, edtDoiTuong;
     private ImageView imgSanPham;
     private Spinner spinnerLoaiSanPham, spinnerNhaSanXuat;
     private loaiSanPhamDao loaiSanPhamDao;
@@ -43,7 +45,6 @@ public class editSanPhamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_san_pham);
-
         initViews();
         initDao();
         initSpinners();
@@ -55,7 +56,6 @@ public class editSanPhamActivity extends AppCompatActivity {
     private void initViews() {
         edtTenSanPham = findViewById(R.id.edtTenSanPham);
         edtGiaSanPham = findViewById(R.id.edtGiaSanPham);
-        edtNgayCapNhat = findViewById(R.id.edtNgayCapNhat);
         edtSoLuong = findViewById(R.id.edtSoLuongSanPham);
         edtMoTa = findViewById(R.id.edtMoTaSanPham);
         edtDoiTuong = findViewById(R.id.edtDoiTuongSanPham);
@@ -88,7 +88,6 @@ public class editSanPhamActivity extends AppCompatActivity {
         Intent intent = getIntent();
         edtTenSanPham.setText(intent.getStringExtra("sp_ten"));
         edtGiaSanPham.setText(intent.getStringExtra("sp_gia"));
-        edtNgayCapNhat.setText(intent.getStringExtra("sp_ngaycapnhat"));
         edtSoLuong.setText(intent.getStringExtra("sp_soluong"));
         edtMoTa.setText(intent.getStringExtra("sp_mota"));
         edtDoiTuong.setText(intent.getStringExtra("sp_doituong"));
@@ -150,10 +149,12 @@ public class editSanPhamActivity extends AppCompatActivity {
     private void saveProduct() {
         String tenSanPham = edtTenSanPham.getText().toString().trim();
         String giaSanPham = edtGiaSanPham.getText().toString().trim();
-        String ngayCapNhat = edtNgayCapNhat.getText().toString().trim();
         String soLuong = edtSoLuong.getText().toString().trim();
         String moTa = edtMoTa.getText().toString().trim();
         String doiTuong = edtDoiTuong.getText().toString().trim();
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); // Định dạng ngày
+        String ngayCapNhat = formatter.format(date);
 
         // Validate inputs
         if (tenSanPham.isEmpty() || giaSanPham.isEmpty() || soLuong.isEmpty()) {

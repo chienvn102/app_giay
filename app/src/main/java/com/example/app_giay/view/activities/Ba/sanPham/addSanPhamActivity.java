@@ -26,14 +26,17 @@ import com.example.app_giay.dao.loaiSanPhamDao;
 import com.example.app_giay.dao.nhaSanXuatDao;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class addSanPhamActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1; // Mã yêu cầu để mở thư viện
     Button btnSave, btnCancel;
     ImageButton btnOpen, btnBack;
     ImageView imgSanPham;
-    EditText edtTenSanPham, edtGia, edtNgayCapNhat, edtSoLuong, edtMaSanPham, edtMaNhaSanXuat, edtMoTa, edtDoiTuong;
+    EditText edtTenSanPham, edtGia, edtSoLuong, edtMaSanPham, edtMaNhaSanXuat, edtMoTa, edtDoiTuong;
     SanPhamDao dao = new SanPhamDao(this);
     loaiSanPhamDao loaiSanPhamDao = new loaiSanPhamDao(this);
     nhaSanXuatDao nhaSanXuatDao = new nhaSanXuatDao(this);
@@ -60,7 +63,6 @@ public class addSanPhamActivity extends AppCompatActivity {
         imgSanPham = findViewById(R.id.imgSanPham);
         edtTenSanPham = findViewById(R.id.edtTenSanPham);
         edtGia = findViewById(R.id.edtGiaSanPham);
-        edtNgayCapNhat = findViewById(R.id.edtNgayCapNhat);
         edtSoLuong = findViewById(R.id.edtSoLuongSanPham);
         spinnerLoaiSanPham = findViewById(R.id.spinnerLoaiSanPham);
         spinnerNhaSanXuat = findViewById(R.id.spinnerNhaSanXuat);
@@ -120,7 +122,7 @@ public class addSanPhamActivity extends AppCompatActivity {
 
             int selectedPosition2 = spinnerNhaSanXuat.getSelectedItemPosition();
             if (selectedPosition2 == 0) {
-                Toast.makeText(this, "Vui chọn nha sửa", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Vui lòng chọn nhà sản xuất", Toast.LENGTH_SHORT).show();
                 return;
             }
             String nsx_ten = spinnerNhaSanXuat.getSelectedItem().toString();
@@ -129,7 +131,6 @@ public class addSanPhamActivity extends AppCompatActivity {
             // Tiếp tục lấy thông tin sản phẩm
             String tenSanPham = edtTenSanPham.getText().toString();
             double gia = Double.parseDouble(edtGia.getText().toString());
-            String ngayCapNhat = edtNgayCapNhat.getText().toString();
             int soLuong = Integer.parseInt(edtSoLuong.getText().toString());
             String moTa = edtMoTa.getText().toString();
             String doiTuong = edtDoiTuong.getText().toString();
@@ -138,6 +139,10 @@ public class addSanPhamActivity extends AppCompatActivity {
             Bitmap bitmap = ((BitmapDrawable) imgSanPham.getDrawable()).getBitmap();
             byte[] imageData = convertBitmapToByteArray(bitmap);
 
+            // Lấy ngày hiện tại (ngày cập nhật)
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            String ngayCapNhat = sdf.format(new Date());
+
             // Gọi phương thức thêm sản phẩm
             dao.addSanPham(tenSanPham, gia, ngayCapNhat, soLuong, maSanPham, maNhaSanXuat, imageData, moTa, doiTuong);
 
@@ -145,6 +150,7 @@ public class addSanPhamActivity extends AppCompatActivity {
             setResult(RESULT_OK);
             finish();
         });
+
 
     }
 

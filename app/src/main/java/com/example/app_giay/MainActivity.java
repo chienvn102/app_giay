@@ -10,6 +10,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.app_giay.dao.DonDatHangDAO;
 import com.example.app_giay.dao.RoleDao;
 import com.example.app_giay.dao.UserDao;
 import com.example.app_giay.database.DatabaseHelper;
@@ -19,8 +20,9 @@ import com.example.app_giay.view.activities.SigninActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button btnSignin, btnRegister;
-//        RoleDao roleDao = new RoleDao(this); // Tạo đối tượng RoleDao
-
+        RoleDao roleDao = new RoleDao(this); // Tạo đối tượng RoleDao
+        UserDao userDao = new UserDao(this);
+        DonDatHangDAO donDatHangDAO = new DonDatHangDAO(this);
 
     DatabaseHelper dbHelper = new DatabaseHelper(this);
     @Override
@@ -41,9 +43,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void signin() {
        Intent intent = new Intent(this, MainBAActivity.class);
-      startActivity(intent);
+       startActivity(intent);
+//         roleDao.addRole("Admin");
 //         roleDao.addRole("User");
-
+//         userDao.addUser("admin", "admin", 1, "admin");
+//         userDao.addUser("user", "user", 2, "user")
+//            donDatHangDAO.addDonDatHang("2023-06-01", "Hà Nội", 1, 1);
+//            donDatHangDAO.addDonDatHang("2023-06-02", "Hà Nội", 1, 2);
+//            donDatHangDAO.addDonDatHang("2023-06-03", "Hà Nội", 1, 3);
+//            donDatHangDAO.addDonDatHang("2023-06-04", "Hà Nội", 2, 4);
+//        donDatHangDAO.addDonDatHang("2023-06-04", "Hà Nội", 2, 5);
     }
 
     public void register() {
