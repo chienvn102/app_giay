@@ -36,7 +36,7 @@ public class addSanPhamActivity extends AppCompatActivity {
     Button btnSave, btnCancel;
     ImageButton btnOpen, btnBack;
     ImageView imgSanPham;
-    EditText edtTenSanPham, edtGia, edtSoLuong, edtMaSanPham, edtMaNhaSanXuat, edtMoTa, edtDoiTuong;
+    EditText edtTenSanPham, edtGia, edtSoLuong, edtMoTa, edtDoiTuong;
     SanPhamDao dao = new SanPhamDao(this);
     loaiSanPhamDao loaiSanPhamDao = new loaiSanPhamDao(this);
     nhaSanXuatDao nhaSanXuatDao = new nhaSanXuatDao(this);
@@ -74,84 +74,108 @@ public class addSanPhamActivity extends AppCompatActivity {
 
         // Lấy danh sách loại sản phẩm
         listLoaiSanPham = loaiSanPhamDao.getAllTenLoaiSanPham();
-
-        // Thêm mục "Chọn loại sản phẩm" vào đầu danh sách
         listLoaiSanPham.add(0, "Chọn loại sản phẩm");
-
-        // Tạo adapter cho Spinner
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listLoaiSanPham);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLoaiSanPham.setAdapter(adapter);
-
-        // Tự động chọn mục đầu tiên (mục không có gì)
         spinnerLoaiSanPham.setSelection(0);
 
-
-        // Lấy danh sách nha sửa
+        // Lấy danh sách nhà sản xuất
         listNhaSanXuat = nhaSanXuatDao.getAllTenNhaSanXuat();
-
-        // Thêm mục "Chọn nha sửa" vào đầu danh sách
-        listNhaSanXuat.add(0, "Chọn nha sửa");
-
-        // Tạo adapter cho Spinner
+        listNhaSanXuat.add(0, "Chọn nhà sản xuất");
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listNhaSanXuat);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerNhaSanXuat.setAdapter(adapter2);
-
-        // Tự động chọn mục đầu tiên (một)
         spinnerNhaSanXuat.setSelection(0);
 
-
         btnOpen.setOnClickListener(v -> openImageChooser());
-        btnSave.setOnClickListener(v -> {
-            // Lấy vị trí đã chọn từ Spinner
-            int selectedPosition = spinnerLoaiSanPham.getSelectedItemPosition();
+        btnSave.setOnClickListener(v -> validateAndSave());
+    }
 
-            // Kiểm tra nếu vị trí đã chọn là 0 (mục "Chọn loại sản phẩm")
-            if (selectedPosition == 0) {
-                // Hiển thị thông báo lỗi và dừng lại
-                Toast.makeText(this, "Vui lòng chọn loại sản phẩm hợp lệ", Toast.LENGTH_SHORT).show();
-                return; // Dừng không cho tiếp tục lưu sản phẩm
-            }
+    private void validateAndSave() {
+        // Kiểm tra thông tin sản phẩm
+        String tenSanPham = edtTenSanPham.getText().toString();
+        if (tenSanPham.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập tên sản phẩm", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-            // Nếu đã chọn loại sản phẩm, lấy tên loại sản phẩm từ Spinner
-            String lsp_ten = spinnerLoaiSanPham.getSelectedItem().toString();
+        String giaText = edtGia.getText().toString();
+        if (giaText.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập giá sản phẩm", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        double gia;
+        try {
+            gia = Double.parseDouble(giaText);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Giá sản phẩm không hợp lệ", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-            // Lấy mã loại sản phẩm dựa trên tên loại sản phẩm từ DAO
-            int maSanPham = loaiSanPhamDao.getLoaiSanPhamMaByTen(lsp_ten);
+        String soLuongText = edtSoLuong.getText().toString();
+        if (soLuongText.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập số lượng sản phẩm", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        int soLuong;
+        try {
+            soLuong = Integer.parseInt(soLuongText);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Số lượng sản phẩm không hợp lệ", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-            int selectedPosition2 = spinnerNhaSanXuat.getSelectedItemPosition();
-            if (selectedPosition2 == 0) {
-                Toast.makeText(this, "Vui lòng chọn nhà sản xuất", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            String nsx_ten = spinnerNhaSanXuat.getSelectedItem().toString();
-            int maNhaSanXuat = nhaSanXuatDao.getNhaSanXuatMaByTen(nsx_ten);
+        // Kiểm tra loại sản phẩm
+        int selectedPosition = spinnerLoaiSanPham.getSelectedItemPosition();
+        if (selectedPosition == 0) {
+            Toast.makeText(this, "Vui lòng chọn loại sản phẩm hợp lệ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String lsp_ten = spinnerLoaiSanPham.getSelectedItem().toString();
+        int maSanPham = loaiSanPhamDao.getLoaiSanPhamMaByTen(lsp_ten);
 
-            // Tiếp tục lấy thông tin sản phẩm
-            String tenSanPham = edtTenSanPham.getText().toString();
-            double gia = Double.parseDouble(edtGia.getText().toString());
-            int soLuong = Integer.parseInt(edtSoLuong.getText().toString());
-            String moTa = edtMoTa.getText().toString();
-            String doiTuong = edtDoiTuong.getText().toString();
-
-            // Lấy bitmap từ ImageView và chuyển đổi thành byte[]
-            Bitmap bitmap = ((BitmapDrawable) imgSanPham.getDrawable()).getBitmap();
-            byte[] imageData = convertBitmapToByteArray(bitmap);
-
-            // Lấy ngày hiện tại (ngày cập nhật)
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-            String ngayCapNhat = sdf.format(new Date());
-
-            // Gọi phương thức thêm sản phẩm
-            dao.addSanPham(tenSanPham, gia, ngayCapNhat, soLuong, maSanPham, maNhaSanXuat, imageData, moTa, doiTuong);
-
-            // Đóng màn hình hiện tại
-            setResult(RESULT_OK);
-            finish();
-        });
+        // Kiểm tra nhà sản xuất
+        int selectedPosition2 = spinnerNhaSanXuat.getSelectedItemPosition();
+        if (selectedPosition2 == 0) {
+            Toast.makeText(this, "Vui lòng chọn nhà sản xuất hợp lệ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String moTa = edtMoTa.getText().toString();
+        if (moTa.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập mô tả sản phẩm", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String doiTuong = edtDoiTuong.getText().toString();
+        if (doiTuong.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập đối tượng sử dụng sản phẩm", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String nsx_ten = spinnerNhaSanXuat.getSelectedItem().toString();
+        int maNhaSanXuat = nhaSanXuatDao.getNhaSanXuatMaByTen(nsx_ten);
 
 
+
+        // Kiểm tra hình ảnh
+        if (imgSanPham.getDrawable() == null) {
+            Toast.makeText(this, "Vui lòng chọn hình ảnh sản phẩm", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Lấy bitmap từ ImageView và chuyển đổi thành byte[]
+        Bitmap bitmap = ((BitmapDrawable) imgSanPham.getDrawable()).getBitmap();
+        byte[] imageData = convertBitmapToByteArray(bitmap);
+
+        // Lấy ngày hiện tại (ngày cập nhật)
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String ngayCapNhat = sdf.format(new Date());
+
+        // Gọi phương thức thêm sản phẩm
+        dao.addSanPham(tenSanPham, gia, ngayCapNhat, soLuong, maSanPham, maNhaSanXuat, imageData, moTa, doiTuong);
+
+        // Đóng màn hình hiện tại
+        setResult(RESULT_OK);
+        finish();
     }
 
     private void openImageChooser() {

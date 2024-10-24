@@ -1,13 +1,16 @@
 package com.example.app_giay.view.activities.Ba.sanPham;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -25,12 +28,14 @@ public class sanphamActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_ADD_SAN_PHAM = 1;
     public static final int REQUEST_CODE_EDIT_SAN_PHAM = 2;
     ImageButton btnAdd, btnBack;
+    Button btnDeleteAll;
     ListView lvSanPham;
     sanPhamAdapter adapter;
     ArrayList<SanPham> data = new ArrayList<>();
     ArrayList<SanPham> originalData = new ArrayList<>();
     SanPhamDao dao = new SanPhamDao(this);
     SearchView searchView;
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +48,15 @@ public class sanphamActivity extends AppCompatActivity {
         });
         btnBack = findViewById(R.id.imgbtnBack);
         btnBack.setOnClickListener(v -> finish());
-        btnAdd = findViewById(R.id.imgbtnAdd);
+
+
         lvSanPham = findViewById(R.id.lvSanPham);
         searchView = findViewById(R.id.searchView);
+
+        btnDeleteAll = findViewById(R.id.btnDeleteAll);
+        btnDeleteAll.setOnClickListener(v -> deleteAllSanPham());
+
+        btnAdd = findViewById(R.id.imgbtnAdd);
         btnAdd.setOnClickListener(v -> {
             Intent intent = new Intent(this, addSanPhamActivity.class);
             startActivityForResult(intent, REQUEST_CODE_ADD_SAN_PHAM);
@@ -109,5 +120,17 @@ public class sanphamActivity extends AppCompatActivity {
 
         // Cập nhật lại giao diện sau khi lọc dữ liệu
         adapter.notifyDataSetChanged();
+    }
+    // Hàm xóa tất cả sản phẩm
+    private void deleteAllSanPham() {
+        new AlertDialog.Builder(this)
+                .setTitle("Xác nhận xóa")
+                .setMessage("Bạn có chắc chắn muốn xóa tất cả sản phẩm không?")
+                .setPositiveButton("Xóa", (dialog, which) -> {
+                    dao.deleteAllSanPham(); // Gọi phương thức xóa tất cả sản phẩm
+                    LoadData(); // Tải lại dữ liệu
+                })
+                .setNegativeButton("Hủy", null)
+                .show();
     }
 }

@@ -50,6 +50,13 @@ public class SanPhamDao {
         db.execSQL(sql, args); // Thực hiện câu lệnh SQL
         db.close(); // Đóng cơ sở dữ liệu
     }
+    public void deleteAllSanPham() {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String sql = "DELETE FROM sanpham"; // Câu lệnh xóa tất cả sản phẩm
+        db.execSQL(sql);
+        db.close();
+    }
+
     public ArrayList<SanPham> getAllSanPham() {
         ArrayList<SanPham> sanPhamList = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase(); // Mở cơ sở dữ liệu

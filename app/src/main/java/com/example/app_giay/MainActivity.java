@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signin() {
-       Intent intent = new Intent(this, MainBAActivity.class);
+       Intent intent = new Intent(this, SigninActivity.class);
        startActivity(intent);
 //         roleDao.addRole("Admin");
 //         roleDao.addRole("User");

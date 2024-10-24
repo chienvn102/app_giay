@@ -1,5 +1,6 @@
 package com.example.app_giay.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -44,6 +45,11 @@ public class nhaSanXuatAdapter extends ArrayAdapter<nhaSanXuat> {
         txtTen.setText(nhaSanXuat.getNsx_ten());
 
         btnDelete.setOnClickListener(v -> {
+            // Hiển thị hộp thoại xác nhận trước khi xóa
+            new AlertDialog.Builder(context)
+                    .setTitle("Xác nhận xóa")
+                    .setMessage("Bạn có chắc chắn muốn xóa " + nhaSanXuat.getNsx_ten() + " không?")
+                    .setPositiveButton("Xóa", (dialog, which) -> {
             // Xác định nhà sản xuất cần xóa dựa vào vị trí position
             nhaSanXuat nhaSanXuatToRemove = data.get(position);
             // Xóa nhà sản xuất khỏi cơ sở dữ liệu
@@ -54,7 +60,9 @@ public class nhaSanXuatAdapter extends ArrayAdapter<nhaSanXuat> {
             notifyDataSetChanged();
             // Hiển thị thông báo xóa nhà sản xuất
             Toast.makeText(context, "Đã xóa " + nhaSanXuat.getNsx_ten(), Toast.LENGTH_SHORT).show();
-            // Add deletion logic here
+             })
+             .setNegativeButton("Hủy", null)
+             .show();
         });
 
         btnUpdate.setOnClickListener(v -> {
