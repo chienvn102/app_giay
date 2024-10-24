@@ -17,7 +17,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#edf2fa">
+
 
             <ImageButton
                 android:id="@+id/imgbtnBack"
@@ -48,7 +50,7 @@
                 android:id="@+id/linearLayout5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                 android:layout_marginTop="50dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/textView17">
 

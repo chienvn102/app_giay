@@ -16,7 +16,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#E2F1E7">
 
             <ImageButton
                 android:id="@+id/imgbtnBack"
@@ -103,6 +104,30 @@
                 </LinearLayout>
 
                 <!-- Ngày Cập Nhật -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewNgayCapNhat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="Ngày Cập Nhật"
+                        android:textSize="22sp" />
+
+                    <EditText
+                        android:id="@+id/edtNgayCapNhat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Ngày cập nhật"
+                        android:inputType="date"
+                        android:minHeight="48dp" />
+                </LinearLayout>
 
                 <!-- Số Lượng -->
                 <LinearLayout
@@ -283,7 +308,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/brn_bgr"
                         android:fontFamily="@font/aoboshi_one"
-                        android:text="Save"
+                        android:text="Lưu"
                         android:textColor="#FFFFFF"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -303,7 +328,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/btn_res_bgr"
                         android:fontFamily="@font/aoboshi_one"
-                        android:text="Cancel"
+                        android:text="Thoát"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

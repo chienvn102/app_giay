@@ -5,12 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#edf2fa"
+        android:background="#E8F5E9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,64 +34,64 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="300dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Chào mừng đến với Ananas Vui lòng đăng nhập để tiếp tục mua sắm"
+            android:text="Chào mừng đến với Ananas\nVui lòng đăng nhập để tiếp tục mua sắm"
             android:textAlignment="center"
             android:textColor="#f15e2c"
-            android:textSize="30sp"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="300dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:text="Nếu bạn chưa có tài khoản, hãy tạo một tài khoản để bắt đầu hành trình mua sắm của bạn!"
             android:textAlignment="center"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <LinearLayout
-            android:layout_width="380dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="24dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            tools:ignore="MissingConstraints">
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
-                android:layout_weight="1"
                 android:background="@drawable/btn_res_bgr"
                 android:text="Đăng ký"
                 android:textColor="#f15e2c"
                 android:textStyle="bold" />
-
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSignin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_weight="1"
                 android:background="@drawable/brn_bgr"
                 android:fontFamily="@font/roboto_bold"
                 android:text="Đăng nhập"
                 android:textColor="#fff"
                 android:textStyle="bold" />
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
