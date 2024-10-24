@@ -49,6 +49,22 @@ public class sanPhamAdapter extends ArrayAdapter<SanPham> {
         ImageButton btnDelete = convertView.findViewById(R.id.btnDeleteNsx);
         ImageButton btnUpdate = convertView.findViewById(R.id.btnUpdateNsx);
 
+        txtTen.setOnClickListener(v -> {
+            // Hiển thị AlertDialog khi click vào tên sản phẩm
+            new AlertDialog.Builder(context)
+                    .setTitle("Thông tin sản phẩm")
+                    .setMessage("Tên sản phẩm: " + sanPham.getSp_ten() + "\n" +
+                            "Giá: " + sanPham.getSp_gia() + "\n" +
+                            "Số lượng: " + sanPham.getSp_soluong() + "\n" +
+                            "Ngày cập nhật: " + sanPham.getSp_ngaycapnhat() + "\n" +
+                            "Mô tả: " + sanPham.getSp_mota())
+                    .setPositiveButton("OK", null) // Nút OK đóng dialog
+                    .setNegativeButton("Hủy", null) // Nút Hủy, tùy chọn có thể không cần
+                    .show();
+        });
+
+
+
         btnDelete.setOnClickListener(v -> {
             new AlertDialog.Builder(context)
                     .setTitle("Xác nhận xóa")

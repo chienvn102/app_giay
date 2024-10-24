@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -64,6 +65,13 @@ public class sanphamActivity extends AppCompatActivity {
                 filterBySanPham(newText);
                 return false;
             }
+        });
+        lvSanPham.setOnItemClickListener((parent, view, position, id) -> {
+            // Lấy item được click từ danh sách
+            SanPham sanPham = data.get(position);
+
+            // Hiển thị thông báo khi click vào item
+            Toast.makeText(this, "Đã click vào sản phẩm: " + sanPham.getSp_ten(), Toast.LENGTH_SHORT).show();
         });
     }
 
