@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,9 +15,19 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.app_giay.R;
+import com.example.app_giay.adapter.feAdpter;
+import com.example.app_giay.dao.SanPhamDao;
+import com.example.app_giay.model.SanPham;
 import com.example.app_giay.view.activities.SigninActivity;
 
+import java.util.ArrayList;
+
 public class MainFEActivity extends AppCompatActivity {
+    GridView gridView;
+    feAdpter adapter;
+    SanPhamDao sanPhamDao = new SanPhamDao(this);
+    ArrayList<SanPham> data = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +39,10 @@ public class MainFEActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        gridView = findViewById(R.id.gridView);
+        data = sanPhamDao.getAllSanPham();
+        adapter = new feAdpter(this, R.layout.layout_grid_viewfe, data);
+        gridView.setAdapter(adapter);
 
         Button btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(v -> {

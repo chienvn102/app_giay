@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 //         roleDao.addRole("Admin");
 //         roleDao.addRole("User");
 //         userDao.addUser("admin", "admin", 1, "admin");
-//         userDao.addUser("user", "user", 2, "user")
+//         userDao.addUser("user", "user", 2, "user");
 //            donDatHangDAO.addDonDatHang("2023-06-01", "Hà Nội", 1, 1);
 //            donDatHangDAO.addDonDatHang("2023-06-02", "Hà Nội", 1, 2);
 //            donDatHangDAO.addDonDatHang("2023-06-03", "Hà Nội", 1, 3);

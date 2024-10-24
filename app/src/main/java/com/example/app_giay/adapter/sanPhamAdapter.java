@@ -59,7 +59,6 @@ public class sanPhamAdapter extends ArrayAdapter<SanPham> {
                             "Ngày cập nhật: " + sanPham.getSp_ngaycapnhat() + "\n" +
                             "Mô tả: " + sanPham.getSp_mota())
                     .setPositiveButton("OK", null) // Nút OK đóng dialog
-                    .setNegativeButton("Hủy", null) // Nút Hủy, tùy chọn có thể không cần
                     .show();
         });
 

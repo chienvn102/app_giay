@@ -30,7 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTableSanPham = "CREATE TABLE sanpham (" +
                 "sp_ma INTEGER PRIMARY KEY," +
                 "sp_ten NVARCHAR(50)," +
-                "sp_gia DECIMAL," +
+                "sp_gia DECIMAL(10,2)," +
                 "sp_ngaycapnhat DATE," +
                 "sp_soluong INTEGER," +
                 "lsp_ma INTEGER," +
@@ -104,10 +104,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onOpen(SQLiteDatabase db) {
-//        super.onOpen(db);
-//        if (!db.isReadOnly()) {
-//            db.execSQL("PRAGMA foreign_keys=ON;");
-//        }
+        super.onOpen(db);
+        if (!db.isReadOnly()) {
+            db.execSQL("PRAGMA foreign_keys=ON;");
+        }
     }
 
     @Override
