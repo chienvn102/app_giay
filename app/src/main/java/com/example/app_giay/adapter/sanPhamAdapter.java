@@ -79,6 +79,7 @@ public class sanPhamAdapter extends ArrayAdapter<SanPham> {
                     .show();
         });
 
+
         btnUpdate.setOnClickListener(v -> {
             Intent intent = new Intent(context, editSanPhamActivity.class);
             intent.putExtra("sp_ma", sanPham.getSp_ma());
@@ -116,4 +117,5 @@ public class sanPhamAdapter extends ArrayAdapter<SanPham> {
         byte[] byteArray = byteArrayOutputStream.toByteArray();
         return Base64.encodeToString(byteArray, Base64.DEFAULT);
     }
+
 }
