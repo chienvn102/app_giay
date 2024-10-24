@@ -10,6 +10,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.app_giay.dao.DonDatHangDAO;
 import com.example.app_giay.dao.RoleDao;
 import com.example.app_giay.dao.UserDao;
 import com.example.app_giay.database.DatabaseHelper;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnSignin, btnRegister;
         RoleDao roleDao = new RoleDao(this); // Tạo đối tượng RoleDao
         UserDao userDao = new UserDao(this);
+        DonDatHangDAO donDatHangDAO = new DonDatHangDAO(this);
 
     DatabaseHelper dbHelper = new DatabaseHelper(this);
     @Override
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 //         roleDao.addRole("Admin");
 //         roleDao.addRole("User");
 //         userDao.addUser("admin", "admin", 1, "admin");
-//         userDao.addUser("user", "user", 2, "user");
+//         userDao.addUser("user", "user", 2, "user")
     }
 
     public void register() {

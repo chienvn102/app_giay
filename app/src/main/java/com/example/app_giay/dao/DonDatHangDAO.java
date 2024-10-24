@@ -11,10 +11,10 @@ public class DonDatHangDAO {
         dbHelper = new DatabaseHelper(context);
     }
 
-    public void addDonDatHang(String dh_ngaylap, String dh_noigiao) {
+    public void addDonDatHang(String dh_ngaylap, String dh_noigiao,int tt_ma, int kh_ma) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String sql = "INSERT INTO dondathang (dh_ngaylap, dh_noigiao) VALUES (?, ?)";
-        Object[] args = {dh_ngaylap, dh_noigiao};
+        String sql = "INSERT INTO dondathang (dh_ngaylap, dh_noigiao, tt_ma, kh_ma) VALUES (?, ?, ?, ?)";
+        Object[] args = {dh_ngaylap, dh_noigiao, tt_ma, kh_ma};
         db.execSQL(sql, args);
     }
 }
