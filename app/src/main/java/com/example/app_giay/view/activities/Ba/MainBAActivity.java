@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.app_giay.R;
+import com.example.app_giay.dao.DonDatHangDAO;
 import com.example.app_giay.view.activities.Ba.loaiSanPham.lspActivity;
 import com.example.app_giay.view.activities.Ba.nhaSanXuat.nsxActivity;
 import com.example.app_giay.view.activities.Ba.sanPham.sanphamActivity;
@@ -22,7 +24,8 @@ import com.example.app_giay.view.activities.SigninActivity;
 
 public class MainBAActivity extends AppCompatActivity {
     ImageButton imgbtnlsp, imgbtnnsx, imgbtnsp;
-
+    TextView txtdonhuy,txtdontc,txttong;
+    DonDatHangDAO donDatHangDAO = new DonDatHangDAO(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,11 @@ public class MainBAActivity extends AppCompatActivity {
         imgbtnlsp = findViewById(R.id.imgbtnlsp);
         imgbtnnsx = findViewById(R.id.imgbtnnsx);
         imgbtnsp = findViewById(R.id.imgbtnsp);
+        txtdonhuy = findViewById(R.id.txtdonhuy);
+        txtdontc = findViewById(R.id.txtdontc);
+        txttong = findViewById(R.id.txttong);
+        txtdonhuy.setText(String.valueOf(donDatHangDAO.getdonbihuuy()));
+        txtdontc.setText(String.valueOf(donDatHangDAO.getdonthanhcong()));
 
         imgbtnlsp.setOnClickListener(v -> {
             try {
