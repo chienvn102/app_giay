@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#E2F1E7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -140,7 +141,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/btn_res_bgr"
                     android:fontFamily="@font/aoboshi_one"
-                    android:text="Hủy"
+                    android:text="Thoát"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
