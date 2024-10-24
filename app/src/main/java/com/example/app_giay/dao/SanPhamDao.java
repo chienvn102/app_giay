@@ -25,13 +25,23 @@ public class SanPhamDao {
         db.execSQL(sql, args); // Thực hiện câu lệnh SQL
         db.close(); // Đóng cơ sở dữ liệu
     }
-    public void updateSanPham(int sp_ma, String sp_ten, double sp_gia, String sp_ngaycapnhat, int sp_soluong, int lsp_ma, int nsx_ma, byte[] sp_hinhanh, String sp_mota, String sp_doituong) {
+    public boolean updateSanPham(int sp_ma, String sp_ten, double sp_gia, String sp_ngaycapnhat, int sp_soluong, int lsp_ma, int nsx_ma, byte[] sp_hinhanh, String sp_mota, String sp_doituong) {
         SQLiteDatabase db = dbHelper.getWritableDatabase(); // Mở cơ sở dữ liệu
         String sql = "UPDATE sanpham SET sp_ten = ?, sp_gia = ?, sp_ngaycapnhat = ?, sp_soluong = ?, lsp_ma = ?, nsx_ma = ?, sp_hinhanh = ?, sp_mota = ?, sp_doituong = ? WHERE sp_ma = ?";
-        Object[] args = {sp_ten, sp_gia, sp_ngaycapnhat, sp_soluong, lsp_ma, nsx_ma, sp_hinhanh, sp_mota, sp_doituong, sp_ma};
-        db.execSQL(sql, args); // Thực hi
-        db.close(); // Đóng cơ sở dữ liệu
+
+        try {
+            Object[] args = {sp_ten, sp_gia, sp_ngaycapnhat, sp_soluong, lsp_ma, nsx_ma, sp_hinhanh, sp_mota, sp_doituong, sp_ma};
+            db.execSQL(sql, args); // Thực hiện
+            return true; // Cập nhật thành công
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false; // Cập nhật thất bại
+        } finally {
+            db.close(); // Đóng cơ sở dữ liệu
+        }
     }
+
+
 
     public void deleteSanPham(int sp_ma) {
         SQLiteDatabase db = dbHelper.getWritableDatabase(); // Mở cơ sở dữ liệu

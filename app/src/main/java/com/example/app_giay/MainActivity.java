@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.app_giay.dao.RoleDao;
 import com.example.app_giay.dao.UserDao;
 import com.example.app_giay.database.DatabaseHelper;
+import com.example.app_giay.view.activities.Ba.MainBAActivity;
 import com.example.app_giay.view.activities.RegisterActivity;
 import com.example.app_giay.view.activities.SigninActivity;
 
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signin() {
-       Intent intent = new Intent(this, SigninActivity.class);
+       Intent intent = new Intent(this, MainBAActivity.class);
       startActivity(intent);
 //         roleDao.addRole("User");
 
