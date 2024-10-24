@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class sanphamActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_ADD_SAN_PHAM = 1;
-    private static final int REQUEST_CODE_EDIT_SAN_PHAM = 2;
+    public static final int REQUEST_CODE_EDIT_SAN_PHAM = 2;
     ImageButton btnAdd, btnBack;
     ListView lvSanPham;
     sanPhamAdapter adapter;

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_giay"
         tools:targetApi="31">
+        <activity
+            android:name=".view.activities.Ba.sanPham.editSanPhamActivity"
+            android:exported="false" />
         <activity
             android:name=".view.activities.Ba.sanPham.addSanPhamActivity"
             android:exported="false" />
@@ -28,7 +32,8 @@
         <activity
             android:name=".view.activities.Ba.sanPham.sanphamActivity"
             android:exported="false" />
-        <activity android:name=".view.activities.Ba.nhaSanXuat.nsxActivity"
+        <activity
+            android:name=".view.activities.Ba.nhaSanXuat.nsxActivity"
             android:exported="false" />
         <activity
             android:name=".view.activities.Ba.nhaSanXuat.editNsxActivity"
