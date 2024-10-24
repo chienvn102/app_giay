@@ -41,13 +41,12 @@
 
         <SearchView
             android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="333dp"
+            android:layout_height="43dp"
             android:layout_marginTop="48dp"
             android:iconifiedByDefault="false"
             android:queryHint="Tìm kiếm..."
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/imgbtnAdd"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -65,13 +64,23 @@
             android:id="@+id/imgbtnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="112dp"
             android:background="@drawable/bgr_btn_add"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lvSanPham"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_add_24"
             tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/btnDeleteAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="DeleteAll"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.897"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lvSanPham" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
