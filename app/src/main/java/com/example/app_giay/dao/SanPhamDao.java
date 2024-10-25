@@ -104,7 +104,35 @@ public class SanPhamDao {
 
         return sanPhamList; // Trả về danh sách sản phẩm
     }
-
-
-
+    public int getSp_ma(String sp_ten) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase(); // Mở cơ sở dữ liệu
+        String sql = "SELECT sp_ma FROM sanpham WHERE sp_ten = ?";
+        String[] args = {sp_ten};
+        Cursor cursor = db.rawQuery(sql, args); // Thực hiện truy vấn
+        try {
+            if (cursor.moveToFirst()) {
+                return cursor.getInt(0);
+            }
+        } finally {
+            cursor.close();
+            db.close();
+        }
+        return -1;
+    }
+    public String getImagePath(int sp_ma) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase(); // Mở cơ sở dữ liệu
+        String sql = "SELECT sp_hinhanh FROM sanpham WHERE sp_ma = ?";
+        String[] args = {String.valueOf(sp_ma)};
+        Cursor cursor = db.rawQuery(sql, args); // Thực hiện truy vấn
+        try {
+            if (cursor.moveToFirst()) {
+                byte[] imageBytes = cursor.getBlob(0);
+                return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length).toString();
+            }
+        } finally {
+            cursor.close();
+            db.close();
+        }
+        return null;
+    }
 }

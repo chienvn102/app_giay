@@ -83,6 +83,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ");";
         db.execSQL(createTableUsers);
 
+        String createTableCart = "CREATE TABLE cart (" +
+                "cart_id INTEGER PRIMARY KEY," +
+                "users_id INTEGER," +
+                "sp_ma INTEGER," +
+                "sp_soluong INTEGER," +
+                "FOREIGN KEY (users_id) REFERENCES users(users_id)," +
+                "FOREIGN KEY (sp_ma) REFERENCES sanpham(sp_ma)" +
+                ");";
+        db.execSQL(createTableCart);
+
         // Tạo bảng roles
         String createTableRoles = "CREATE TABLE roles (" +
                 "role_id INTEGER PRIMARY KEY," +
@@ -104,10 +114,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onOpen(SQLiteDatabase db) {
-        super.onOpen(db);
-        if (!db.isReadOnly()) {
-            db.execSQL("PRAGMA foreign_keys=ON;");
-        }
+//        super.onOpen(db);
+//        if (!db.isReadOnly()) {
+//            db.execSQL("PRAGMA foreign_keys=ON;");
+//        }
     }
 
     @Override
