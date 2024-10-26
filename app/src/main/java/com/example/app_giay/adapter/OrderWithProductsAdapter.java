@@ -10,16 +10,17 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 
 import com.example.app_giay.R;
+import com.example.app_giay.model.OrderWithProducts;
 import com.example.app_giay.model.donhang;
 
 import java.util.ArrayList;
 
-public class donhangAdapter extends ArrayAdapter<donhang> {
+public class OrderWithProductsAdapter extends ArrayAdapter<OrderWithProducts> {
     private Context context;
     private int resource;
-    private ArrayList<donhang> data;
+    private ArrayList<OrderWithProducts> data;
 
-    public donhangAdapter(Context context, int resource, ArrayList<donhang> data) {
+    public OrderWithProductsAdapter(Context context, int resource, ArrayList<OrderWithProducts> data) {
         super(context, resource, data);
         this.context = context;
         this.resource = resource;
@@ -32,36 +33,30 @@ public class donhangAdapter extends ArrayAdapter<donhang> {
             convertView = LayoutInflater.from(context).inflate(resource, parent, false);
         }
 
-        // Ánh xạ các thành phần trong giao diện
         TextView txtdh_ma = convertView.findViewById(R.id.txtdh_ma);
-        TextView txtsp_ten = convertView.findViewById(R.id.txtsp_ten);
-        TextView txtsp_gia = convertView.findViewById(R.id.txtsp_gia);
-        TextView txtsp_mota = convertView.findViewById(R.id.txtsp_mota);
         TextView txtdh_noigiao = convertView.findViewById(R.id.txtdh_noigiao);
 
-        donhang currentOrder = data.get(position);
+        OrderWithProducts currentOrder = data.get(position);
 
-        // Hiển thị thông tin đơn hàng
-        txtdh_ma.setText(String.valueOf(currentOrder.getDhMa()));
-        txtsp_ten.setText("Tên sản phẩm: " + currentOrder.getSpTen());
-        txtsp_gia.setText("Giá: " + currentOrder.getSpGia());
-        txtsp_mota.setText("Mô tả: " + currentOrder.getSpMoTa());
+        txtdh_ma.setText("Mã đơn hàng: " + currentOrder.getDhMa());
         txtdh_noigiao.setText("Nơi giao: " + currentOrder.getDhNoiGiao());
 
         convertView.setOnClickListener(view -> {
-            // Tạo AlertDialog để hiển thị chi tiết đơn hàng
+            // Tạo AlertDialog để hiển thị tất cả sản phẩm
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setTitle("Chi tiết đơn hàng");
+            builder.setTitle("Chi tiết đơn hàng " + currentOrder.getDhMa());
 
-            // Nội dung chi tiết đơn hàng
-            String details = "Tên sản phẩm: " + currentOrder.getSpTen() + "\n" +
-                    "Giá: " + currentOrder.getSpGia() + "\n" +
-                    "Mô tả: " + currentOrder.getSpMoTa() + "\n" +
-                    "Nơi giao: " + currentOrder.getDhNoiGiao();
+            // Xây dựng nội dung với tất cả sản phẩm
+            StringBuilder details = new StringBuilder();
+            for (donhang product : currentOrder.getProducts()) {
+                details.append("Tên sản phẩm: ").append(product.getSpTen()).append("\n")
+                        .append("Giá: ").append(product.getSpGia()).append("\n")
+                        .append("Mô tả: ").append(product.getSpMoTa()).append("\n\n");
+            }
 
-            builder.setMessage(details);
+            builder.setMessage(details.toString());
 
-            // Nút đóng dialog
+            // Nút đóng
             builder.setPositiveButton("Đóng", (dialog, which) -> dialog.dismiss());
 
             // Hiển thị dialog
@@ -71,6 +66,5 @@ public class donhangAdapter extends ArrayAdapter<donhang> {
 
         return convertView;
     }
-
-
 }
+

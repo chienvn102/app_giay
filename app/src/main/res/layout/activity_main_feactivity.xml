@@ -94,7 +94,7 @@
                 tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             <ImageButton
-                android:id="@+id/imabtnHome"
+                android:id="@+id/imgbtnHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

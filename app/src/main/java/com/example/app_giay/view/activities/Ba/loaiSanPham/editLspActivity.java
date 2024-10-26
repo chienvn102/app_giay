@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -19,7 +20,7 @@ public class editLspActivity extends AppCompatActivity {
     EditText edtTenLsp, edtMota;
     loaiSanPhamDao dao = new loaiSanPhamDao(this);
     Button btnSave, btnCancel;
-
+    ImageButton imgbtnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +39,8 @@ public class editLspActivity extends AppCompatActivity {
         edtMota = findViewById(R.id.edtMoTa);
         btnSave = findViewById(R.id.btnSave);
         btnCancel = findViewById(R.id.btnCancel);
-
+        imgbtnBack = findViewById(R.id.imgbtnBack);
+        imgbtnBack.setOnClickListener(v -> finish());
         // Cài đặt dữ liệu hiện có vào các EditText
         edtTenLsp.setText(getIntent().getStringExtra("lsp_ten"));
         edtMota.setText(getIntent().getStringExtra("lsp_mota"));

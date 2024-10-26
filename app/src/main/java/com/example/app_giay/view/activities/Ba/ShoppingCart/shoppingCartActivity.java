@@ -1,9 +1,11 @@
 package com.example.app_giay.view.activities.Ba.ShoppingCart;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +22,7 @@ import com.example.app_giay.adapter.gioHangAdapter;
 import com.example.app_giay.dao.cartDao;
 import com.example.app_giay.model.cart;
 import com.example.app_giay.dao.sp_dondathangDao;
+import com.example.app_giay.view.activities.Fe.MainFEActivity;
 
 import java.util.ArrayList;
 
@@ -31,7 +34,8 @@ public class shoppingCartActivity extends AppCompatActivity {
     gioHangAdapter adapter;
     TextView txtBuy;
     sp_dondathangDao sp_dondathangDAO = new sp_dondathangDao(this);
-
+    ImageButton imgbtnBack, imgbtnHome, imgbtnDonHang;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +66,23 @@ public class shoppingCartActivity extends AppCompatActivity {
 
         adapter = new gioHangAdapter(this, R.layout.layout_itemcart, data);
         listView.setAdapter(adapter);
+
+        imgbtnBack = findViewById(R.id.imgbtnBack);
+        imgbtnBack.setOnClickListener(v -> finish());
+
+        imgbtnHome = findViewById(R.id.imgbtnHome);
+        imgbtnHome.setOnClickListener(v -> {
+            Intent intent = new Intent(shoppingCartActivity.this, MainFEActivity.class);
+            startActivity(intent);
+        });
+
+        imgbtnDonHang = findViewById(R.id.imgbtnDonHang);
+        imgbtnDonHang.setOnClickListener(v -> {
+            Intent intent = new Intent(shoppingCartActivity.this, DonHangttActivity.class);
+            startActivity(intent);
+        });
+
+
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
