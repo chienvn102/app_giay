@@ -3,6 +3,7 @@ package com.example.app_giay.dao;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.example.app_giay.database.DatabaseHelper;
 import com.example.app_giay.model.User;
@@ -52,4 +53,22 @@ public class UserDao {
         cursor.close();
         return exists;
     }
+    public int getUserId(String username) {
+        String sql = "SELECT users_id FROM users WHERE username = ?";
+        String[] args = {username};
+
+        // Khai báo biến cho SQLiteDatabase
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        try (Cursor cursor = db.rawQuery(sql, args)) {
+            if (cursor.moveToFirst()) {
+                return cursor.getInt(0); // Trả về userId nếu tìm thấy
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // Ghi lại ngoại lệ nếu có
+        }
+
+        return -1; // Trả về -1 nếu không tìm thấy userId
+    }
+
 }
