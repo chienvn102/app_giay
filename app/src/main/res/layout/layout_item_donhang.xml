@@ -12,16 +12,6 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/txtsp_ten"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/txtsp_gia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
         android:id="@+id/txtsp_mota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -30,4 +20,10 @@
         android:id="@+id/txtdh_noigiao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/txtTrangThai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

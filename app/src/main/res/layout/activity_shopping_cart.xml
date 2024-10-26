@@ -52,7 +52,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="mua ngay" />
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="mua ngay"
+                    android:textColor="#4CAF50"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
@@ -64,7 +68,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="150dp"
+            android:fontFamily="@font/roboto_bold"
             android:text="Giỏ hàng đang trống"
+            android:textColor="#F44336"
+            android:textSize="20sp"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
