@@ -1,6 +1,8 @@
 package com.example.app_giay.view.activities.Ba.donHang;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -13,6 +15,7 @@ import com.example.app_giay.R;
 import com.example.app_giay.adapter.donHanAdminAdapter;
 import com.example.app_giay.dao.sp_dondathangDao;
 import com.example.app_giay.model.donhang;
+import com.example.app_giay.view.activities.Ba.MainBAActivity;
 
 import java.util.ArrayList;
 
@@ -21,7 +24,7 @@ public class DonHangActivity extends AppCompatActivity {
     ListView listView;
     donHanAdminAdapter adapter;
     ArrayList<donhang> data = new ArrayList<>();
-
+    ImageButton imgbtnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,5 +39,11 @@ public class DonHangActivity extends AppCompatActivity {
         listView = findViewById(R.id.lvDon);
         adapter = new donHanAdminAdapter(this, R.layout.layout_item_donhang2, data);
         listView.setAdapter(adapter);
+
+        imgbtnBack = findViewById(R.id.imgbtnBack);
+        imgbtnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(DonHangActivity.this, MainBAActivity.class);
+            startActivity(intent);
+        });
     }
 }

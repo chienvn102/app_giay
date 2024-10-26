@@ -65,6 +65,8 @@ public class SigninActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Không tìm thấy người dùng", Toast.LENGTH_SHORT).show();
                 }
+            }else {
+                Toast.makeText(getApplicationContext(), "Sai username hoặc password", Toast.LENGTH_SHORT).show();
             }
 
         });

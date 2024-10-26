@@ -41,45 +41,65 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/txtsp_ten"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="16dp"
-            android:text="TextView"
+            android:layout_marginTop="476dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Ten San Pham :"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtsp_ten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/aoboshi_one"
+            android:text="TextView"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/imgHinhSanPham" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Mo ta :"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtsp_ten" />
 
         <TextView
             android:id="@+id/txtlsp_mota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/aoboshi_one"
             android:text="TextView"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/textView13"
             app:layout_constraintTop_toBottomOf="@+id/txtsp_ten" />
 
         <LinearLayout
             android:layout_width="409dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginBottom="16dp"
             android:orientation="horizontal"
+            android:paddingBottom="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageButton
-                android:id="@+id/imgbtnDonHang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/trongsuot"
-                app:srcCompat="@drawable/baseline_library_add_check_24"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-            <ImageButton
-                android:id="@+id/imabtnHome"
+                android:id="@+id/imgbtnHome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -95,17 +115,24 @@
 
                 <TextView
                     android:id="@+id/txtBuy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:text="mua ngay" />
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:text="mua ngay"
+                    android:textColor="#4CAF50"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/txtsp_gia"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
-                    android:text="TextView" />
+                    android:fontFamily="@font/aoboshi_one"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </LinearLayout>

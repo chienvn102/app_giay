@@ -1,5 +1,6 @@
 package com.example.app_giay.view.activities.Ba.detailSanPham;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -25,14 +26,16 @@ import com.example.app_giay.R;
 import com.example.app_giay.dao.SanPhamDao;
 import com.example.app_giay.view.activities.Ba.ShoppingCart.shoppingCartActivity;
 import com.example.app_giay.dao.cartDao;
+import com.example.app_giay.view.activities.Fe.MainFEActivity;
 
 public class detailSanPhamActivity extends AppCompatActivity {
-    ImageButton imgBtnBack;
+    ImageButton imgBtnBack, imgbtnHome;
     ImageView imgSanPham;
     TextView tvTenSanPham, tvMoTaSanPham, tvGiaSanPham, txtBuy;
     cartDao cartDao;
     SanPhamDao sanPhamDao = new SanPhamDao(this);
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +58,19 @@ public class detailSanPhamActivity extends AppCompatActivity {
         });
 
         imgBtnBack = findViewById(R.id.imgbtnBack);
+        imgBtnBack.setOnClickListener(v -> finish());
+
         imgSanPham = findViewById(R.id.imgHinhSanPham);
         tvTenSanPham = findViewById(R.id.txtsp_ten);
         tvMoTaSanPham = findViewById(R.id.txtlsp_mota);
         tvGiaSanPham = findViewById(R.id.txtsp_gia);
         txtBuy = findViewById(R.id.txtBuy);
+
+        imgbtnHome = findViewById(R.id.imgbtnHome);
+        imgbtnHome.setOnClickListener(v -> {
+            Intent intent = new Intent(detailSanPhamActivity.this, MainFEActivity.class);
+            startActivity(intent);
+        });
 
         Intent intent = getIntent();
         tvTenSanPham.setText(intent.getStringExtra("sanPham"));

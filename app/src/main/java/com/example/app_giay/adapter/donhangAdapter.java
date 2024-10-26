@@ -34,10 +34,19 @@ public class donhangAdapter extends ArrayAdapter<donhang> {
 
         // Ánh xạ các thành phần trong giao diện
         TextView txtdh_ma = convertView.findViewById(R.id.txtdh_ma);
+        TextView txtsp_ten = convertView.findViewById(R.id.txtsp_ten);
+        TextView txtsp_gia = convertView.findViewById(R.id.txtsp_gia);
+        TextView txtsp_mota = convertView.findViewById(R.id.txtsp_mota);
+        TextView txtdh_noigiao = convertView.findViewById(R.id.txtdh_noigiao);
+
         donhang currentOrder = data.get(position);
 
-        // Hiển thị mã đơn hàng
+        // Hiển thị thông tin đơn hàng
         txtdh_ma.setText(String.valueOf(currentOrder.getDhMa()));
+        txtsp_ten.setText("Tên sản phẩm: " + currentOrder.getSpTen());
+        txtsp_gia.setText("Giá: " + currentOrder.getSpGia());
+        txtsp_mota.setText("Mô tả: " + currentOrder.getSpMoTa());
+        txtdh_noigiao.setText("Nơi giao: " + currentOrder.getDhNoiGiao());
 
         convertView.setOnClickListener(view -> {
             // Tạo AlertDialog để hiển thị chi tiết đơn hàng
@@ -62,5 +71,6 @@ public class donhangAdapter extends ArrayAdapter<donhang> {
 
         return convertView;
     }
+
 
 }

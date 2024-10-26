@@ -48,7 +48,23 @@ public class informationActivity extends AppCompatActivity {
         String email = txtEmail.getText().toString();
         String phone = txtPhone.getText().toString();
         String address = txtAddress.getText().toString();
+        // Kiểm tra các trường không được để trống
+        if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || address.isEmpty()) {
+            Toast.makeText(this, "Các trường không được để trống!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
+        // Kiểm tra định dạng email
+        if (!email.endsWith("@gmail.com")) {
+            Toast.makeText(this, "Email phải kết thúc bằng @gmail.com!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Kiểm tra số điện thoại
+        if (phone.length() != 10 || !phone.matches("\\d+")) {
+            Toast.makeText(this, "Số điện thoại không hợp lệ!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         // Định dạng ngày hiện tại
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date = dateFormat.format(Calendar.getInstance().getTime());
