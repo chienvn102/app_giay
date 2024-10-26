@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/anhkhongnen3"
     tools:context=".view.activities.RegisterActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+
+
 
         <ImageButton
             android:id="@+id/imgBtnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="40dp"
+            android:background="@null"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_arrow_back_24"
@@ -31,114 +29,108 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:fontFamily="@font/aoboshi_one"
-            android:text="Create an account"
-            android:textSize="40dp"
-             android:textStyle="bold"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Đăng ký tài khoản"
+            android:layout_marginRight="30dp"
+            android:textColor="#C36B4F"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imgBtnBack"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.461"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgBtnBack" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:fontFamily="@font/aoboshi_one"
-            android:text="Sign up now and unlock exclusive access !"
-            android:textAlignment="center"
-            android:textSize="25dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+            app:layout_constraintHorizontal_bias="0.529"
+            app:layout_constraintStart_toEndOf="@+id/imgBtnBack"
+            app:layout_constraintTop_toTopOf="@+id/imgBtnBack" />
 
         <LinearLayout
             android:id="@+id/linearLayout1"
-            android:layout_width="409dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/textView10"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="1dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9">
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aoboshi_one"
-                android:text="Yourname"
-                android:textSize="22sp" />
+                android:layout_marginBottom="1dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Tên của bạn"
+                android:layout_marginLeft="30dp"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edtYourname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Yourname"
+                android:layout_marginBottom="1dp"
                 android:inputType="text"
+                android:layout_marginLeft="30dp"
                 android:minHeight="48dp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="409dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-
             android:layout_marginTop="32dp"
-
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout1"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="1dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
 
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aoboshi_one"
-                android:text="Username"
-                android:textSize="22sp" />
+                android:layout_marginBottom="1dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Tên đăng nhập"
+                android:layout_marginLeft="30dp"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edtUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Username"
+                android:layout_marginBottom="1dp"
                 android:inputType="text"
+                android:layout_marginLeft="30dp"
                 android:minHeight="48dp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/linearLayout3"
-            android:layout_width="409dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-
             android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="1dp">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aoboshi_one"
-                android:minHeight="48dp"
-                android:text="Password"
-                android:textSize="22sp" />
+                android:layout_marginBottom="1dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Mật khẩu"
+                android:layout_marginLeft="30dp"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edtPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Password"
+                android:layout_marginBottom="1dp"
                 android:inputType="textPassword"
+                android:layout_marginLeft="30dp"
                 android:minHeight="48dp" />
         </LinearLayout>
 
@@ -146,29 +138,31 @@
             android:id="@+id/btnCreateAccount"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="204dp"
             android:background="@drawable/btn_res_bgr"
             android:fontFamily="@font/roboto_bold"
-            android:text="Create Account"
+            android:text="Tạo tài khoản"
             android:textColor="#f15e2c"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSignIn"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/brn_bgr"
-            android:fontFamily="@font/roboto_bold"
-            android:text="Sign In"
-            android:textColor="#FFF"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnCreateAccount" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSignIn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#FF5722"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Đăng nhập"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCreateAccount" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

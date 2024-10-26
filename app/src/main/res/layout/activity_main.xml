@@ -5,12 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/anhkhongnen7"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E8F5E9"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +29,7 @@
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 app:srcCompat="@drawable/hhhh" />
         </LinearLayout>
 
@@ -36,14 +37,15 @@
             android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto_bold"
+            android:fontFamily="sans-serif-black"
             android:text="Chào mừng đến với Ananas\nVui lòng đăng nhập để tiếp tục mua sắm"
             android:textAlignment="center"
             android:textColor="#f15e2c"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
@@ -52,17 +54,20 @@
             android:id="@+id/textView3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:text="Nếu bạn chưa có tài khoản, hãy tạo một tài khoản để bắt đầu hành trình mua sắm của bạn!"
             android:textAlignment="center"
+            android:textAllCaps="false"
             android:textSize="14sp"
+            android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <LinearLayout
+            android:id="@+id/linearLayout6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -73,25 +78,30 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnRegister"
-                android:layout_width="wrap_content"
+                android:layout_width="245dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/btn_res_bgr"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/bgr_nsx"
                 android:text="Đăng ký"
                 android:textColor="#f15e2c"
                 android:textStyle="bold" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnSignin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:background="@drawable/brn_bgr"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Đăng nhập"
-                android:textColor="#fff"
-                android:textStyle="bold" />
         </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSignin"
+            android:layout_width="245dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/brn_bgr"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Đăng nhập"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout6"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout6"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

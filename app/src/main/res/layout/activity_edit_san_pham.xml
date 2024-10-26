@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/anhkhongnen7"
     tools:context=".view.activities.Ba.sanPham.editSanPhamActivity">
     <ScrollView
         android:layout_width="0dp"
@@ -16,18 +17,20 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#E2F1E7">
+            android:layout_height="wrap_content">
+
+            <!-- Form Inputs for Product Details -->
 
             <ImageButton
                 android:id="@+id/imgbtnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginStart="36dp"
                 android:background="@drawable/trongsuot"
+                app:layout_constraintBottom_toBottomOf="@+id/textView17"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
                 app:srcCompat="@drawable/baseline_keyboard_arrow_left_24"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
@@ -35,15 +38,17 @@
                 android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/aoboshi_one"
-                android:text="Sửa sản phẩm"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Sửa Sản Phẩm"
+                android:textColor="#C36B4F"
                 android:textSize="28sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.146"
                 app:layout_constraintStart_toEndOf="@+id/imgbtnBack"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Form Inputs for Product Details -->
             <LinearLayout
                 android:id="@+id/linearLayout5"
                 android:layout_width="match_parent"
@@ -65,16 +70,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Tên Sản Phẩm"
+                        android:text="Tên sản phẩm"
                         android:textSize="22sp" />
 
                     <EditText
                         android:id="@+id/edtTenSanPham"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Tên sản phẩm"
                         android:inputType="text"
-                        android:minHeight="48dp" />
+                        android:minHeight="48dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
 
                 <!-- Giá Sản Phẩm -->
@@ -91,16 +96,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Giá Sản Phẩm"
+                        android:text="Giá sản phẩm"
                         android:textSize="22sp" />
 
                     <EditText
                         android:id="@+id/edtGiaSanPham"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Giá sản phẩm"
                         android:inputType="numberDecimal"
-                        android:minHeight="48dp" />
+                        android:minHeight="48dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
 
                 <!-- Ngày Cập Nhật -->
@@ -119,16 +124,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Số Lượng"
+                        android:text="Số lượng"
                         android:textSize="22sp" />
 
                     <EditText
                         android:id="@+id/edtSoLuongSanPham"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Số lượng sản phẩm"
                         android:inputType="number"
-                        android:minHeight="48dp" />
+                        android:minHeight="48dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
 
                 <!-- Mã Loại Sản Phẩm -->
@@ -145,7 +150,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Mã Loại Sản Phẩm"
+                        android:text="Mã loại sản phẩm"
                         android:textSize="22sp" />
 
                     <Spinner
@@ -170,7 +175,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Mã Nhà Sản Xuất"
+                        android:text="Mã nhà sản xuất"
                         android:textSize="22sp" />
 
                     <Spinner
@@ -195,7 +200,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Hình Ảnh Sản Phẩm"
+                        android:text="Hình anh sản phẩm"
                         android:textSize="22sp" />
 
                     <ImageButton
@@ -227,14 +232,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Mô Tả"
+                        android:text="Mô tả"
                         android:textSize="22sp" />
 
                     <EditText
                         android:id="@+id/edtMoTaSanPham"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Mô tả sản phẩm"
                         android:inputType="text"
                         android:minHeight="48dp" />
                 </LinearLayout>
@@ -253,14 +257,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Đối Tượng"
+                        android:text="Đối tượng"
                         android:textSize="22sp" />
 
                     <EditText
                         android:id="@+id/edtDoiTuongSanPham"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Đối tượng" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -286,6 +289,7 @@
                         android:fontFamily="@font/aoboshi_one"
                         android:text="Lưu"
                         android:textColor="#FFFFFF"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -305,6 +309,7 @@
                         android:background="@drawable/btn_res_bgr"
                         android:fontFamily="@font/aoboshi_one"
                         android:text="Thoát"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

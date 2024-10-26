@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/anhkhongnen7"
     tools:context=".view.activities.Ba.detailSanPham.detailSanPhamActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,7 +48,7 @@
             android:layout_marginStart="36dp"
             android:layout_marginTop="476dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Ten San Pham :"
+            android:text="Tên Sản Phẩm :"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -71,7 +72,7 @@
             android:layout_marginStart="36dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Mo ta :"
+            android:text="Mô Tả :"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtsp_ten" />
@@ -120,7 +121,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/roboto_bold"
                     android:gravity="center"
-                    android:text="mua ngay"
+                    android:text="Mua Ngay"
                     android:textColor="#4CAF50"
                     android:textSize="20sp" />
 

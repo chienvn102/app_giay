@@ -5,11 +5,11 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/anhkhongnen7"
     tools:context=".view.activities.Ba.ShoppingCart.DonHangttActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#edf2fa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -50,12 +50,14 @@
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="@font/aoboshi_one"
-            android:text="Don Hang"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Đơn Hàng"
+            android:textColor="#C36B4F"
             android:textSize="28sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.187"
+            app:layout_constraintHorizontal_bias="0.031"
             app:layout_constraintStart_toEndOf="@+id/imgbtnBack"
             app:layout_constraintTop_toTopOf="parent" />
 

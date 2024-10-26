@@ -5,13 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/anhkhongnen7"
     tools:context=".view.activities.Ba.sanPham.sanphamActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#edf2fa"
+        android:background="@drawable/anhkhongnen7"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -19,11 +21,12 @@
             android:id="@+id/imgbtnBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="36dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="4dp"
             android:background="@drawable/trongsuot"
+            app:layout_constraintBottom_toBottomOf="@+id/textView16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView16"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/baseline_keyboard_arrow_left_24"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -31,12 +34,15 @@
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="@font/aoboshi_one"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/roboto_bold"
             android:text="Sản Phẩm"
+            android:textColor="#C36B4F"
             android:textSize="28sp"
+
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.187"
+            app:layout_constraintHorizontal_bias="0.082"
             app:layout_constraintStart_toEndOf="@+id/imgbtnBack"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,32 +62,24 @@
             android:layout_width="417dp"
             android:layout_height="500dp"
             android:layout_marginTop="44dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
+
         <ImageButton
             android:id="@+id/imgbtnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="112dp"
+            android:layout_marginTop="128dp"
             android:background="@drawable/bgr_btn_add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_add_24"
             tools:ignore="SpeakableTextPresentCheck" />
-
-        <Button
-            android:id="@+id/btnDeleteAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="DeleteAll"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.897"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lvSanPham" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/bgr_btn_add"
     android:orientation="horizontal"
     android:padding="10dp">
 
@@ -11,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+
         android:orientation="horizontal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +25,6 @@
                 android:layout_width="120dp"
                 android:layout_height="100dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@android:drawable/ic_menu_gallery"
@@ -41,9 +42,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="28dp"
-                android:fontFamily="@font/aoboshi_one"
+                android:fontFamily="@font/roboto_bold"
                 android:text="TextView"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints" />
@@ -65,9 +66,9 @@
                 android:id="@+id/btnUpdateNsx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/btn_edit"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bgr_item_grid"
                 android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -84,12 +85,12 @@
                 android:id="@+id/btnDeleteNsx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="28dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/btn_trash"
                 android:padding="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.407"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/btnUpdateNsx"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/baseline_restore_from_trash_24"

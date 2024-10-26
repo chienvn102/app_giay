@@ -28,7 +28,7 @@ public class sanphamActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_ADD_SAN_PHAM = 1;
     public static final int REQUEST_CODE_EDIT_SAN_PHAM = 2;
     ImageButton btnAdd, btnBack;
-    Button btnDeleteAll;
+
     ListView lvSanPham;
     sanPhamAdapter adapter;
     ArrayList<SanPham> data = new ArrayList<>();
@@ -53,8 +53,7 @@ public class sanphamActivity extends AppCompatActivity {
         lvSanPham = findViewById(R.id.lvSanPham);
         searchView = findViewById(R.id.searchView);
 
-        btnDeleteAll = findViewById(R.id.btnDeleteAll);
-        btnDeleteAll.setOnClickListener(v -> deleteAllSanPham());
+
 
         btnAdd = findViewById(R.id.imgbtnAdd);
         btnAdd.setOnClickListener(v -> {
