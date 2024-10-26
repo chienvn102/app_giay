@@ -119,15 +119,14 @@ public class SanPhamDao {
         }
         return -1;
     }
-    public String getImagePath(int sp_ma) {
+    public String getSp_ten(int sp_ma) {
         SQLiteDatabase db = dbHelper.getReadableDatabase(); // Mở cơ sở dữ liệu
-        String sql = "SELECT sp_hinhanh FROM sanpham WHERE sp_ma = ?";
+        String sql = "SELECT sp_ten FROM sanpham WHERE sp_ma = ?";
         String[] args = {String.valueOf(sp_ma)};
         Cursor cursor = db.rawQuery(sql, args); // Thực hiện truy vấn
         try {
             if (cursor.moveToFirst()) {
-                byte[] imageBytes = cursor.getBlob(0);
-                return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length).toString();
+                return cursor.getString(0);
             }
         } finally {
             cursor.close();
@@ -135,4 +134,38 @@ public class SanPhamDao {
         }
         return null;
     }
+
+    public double getSp_gia(int sp_ma) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase(); // Mở cơ sở dữ liệu
+        String sql = "SELECT sp_gia FROM sanpham WHERE sp_ma = ?";
+        String[] args = {String.valueOf(sp_ma)};
+        Cursor cursor = db.rawQuery(sql, args); // Thực hiện truy vấn
+        try {
+            if (cursor.moveToFirst()) {
+                return cursor.getDouble(0);
+            }
+        } finally {
+            cursor.close();
+            db.close();
+        }
+        return -1;
+    }
+    public Bitmap getsp_img(int sp_ma) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase(); // Mở cơ sở dữ liệu
+        String sql = "SELECT sp_hinhanh FROM sanpham WHERE sp_ma = ?";
+        String[] args = {String.valueOf(sp_ma)};
+        Cursor cursor = db.rawQuery(sql, args); // Thực hiện truy vấn
+        try {
+            if (cursor.moveToFirst()) {
+                byte[] imageBytes = cursor.getBlob(0);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+                return bitmap;
+            }
+        } finally {
+            cursor.close();
+            db.close();
+        }
+        return null;
+    }
+
 }

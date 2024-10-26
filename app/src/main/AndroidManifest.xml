@@ -15,6 +15,15 @@
         android:theme="@style/Theme.App_giay"
         tools:targetApi="31">
         <activity
+            android:name=".view.activities.Ba.donHang.DonHangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.Ba.ShoppingCart.DonHangttActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activities.Ba.ShoppingCart.informationActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activities.Ba.ShoppingCart.shoppingCartActivity"
             android:exported="false" />
         <activity

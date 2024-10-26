@@ -1,9 +1,11 @@
 package com.example.app_giay.view.activities.Ba.ShoppingCart;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -13,24 +15,22 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.app_giay.R;
-import com.example.app_giay.dao.SanPhamDao;
+
+import com.example.app_giay.adapter.gioHangAdapter;
 import com.example.app_giay.dao.cartDao;
 import com.example.app_giay.model.cart;
-import com.example.app_giay.model.cartdetail;
+import com.example.app_giay.dao.sp_dondathangDao;
 
 import java.util.ArrayList;
 
-import com.example.app_giay.adapter.cartAdapter;
-
-
 public class shoppingCartActivity extends AppCompatActivity {
-    cartDao cartDao = new cartDao(this);
-    SanPhamDao sanPhamDao = new SanPhamDao(this);
-    ArrayList<cart> cartList;
-    cartdetail  cartdetail = new cartdetail();
-    ArrayList<cartdetail> data = new ArrayList<>();
-    cartAdapter cartAdapter ;
-    ListView lvCart;
+    public static final int REQUEST_CODE_BUY_CART = 1;
+    ListView listView;
+    cartDao cartDao;
+    ArrayList<cart> data = new ArrayList<>();
+    gioHangAdapter adapter;
+    TextView txtBuy;
+    sp_dondathangDao sp_dondathangDAO = new sp_dondathangDao(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,32 +43,48 @@ public class shoppingCartActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
         SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
         int currentUserId = prefs.getInt("user_id", -1);
 
-        // Lấy tất cả các mục trong giỏ hàng
-        cartList = cartDao.getCartItems(currentUserId);
-        // Hiển thị danh sách các mục trong giỏ hàng
-        for (cart cartItem : cartList) {
-            int sp_ma = cartItem.getSp_ma();
-            String sp_img = sanPhamDao.getImagePath(sp_ma);
-            int soluong = cartItem.getSp_soluong();
-            int user_id = cartItem.getUsers_id();
-            cartdetail.setSp_ma(sp_ma);
-            cartdetail.setSp_soluong(soluong);
-            cartdetail.setUsers_id(user_id);
-            cartdetail.setSp_img(sp_img);
-            data.add(cartdetail);
-            Log.d("ShoppingCartActivity", "uuu: " + user_id);
-            Log.d("ShoppingCartActivity", "Product ID: " + sp_ma);
-            Log.d("ShoppingCartActivity", "Quantity: " + soluong);
-            Log.d("ShoppingCartActivity", "img: " + sp_img);
-        }
-        cartAdapter = new cartAdapter(this, R.layout.cart, data);
-        lvCart = findViewById(R.id.lvGioHang);
-        lvCart.setAdapter(cartAdapter);
-        cartAdapter.notifyDataSetChanged();
+        listView = findViewById(R.id.lvDon);
+        cartDao = new cartDao(this);
+        data = cartDao.getCartItems(currentUserId);
 
+        txtBuy = findViewById(R.id.txtBuy);
+        txtBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(shoppingCartActivity.this, informationActivity.class);
+                intent.putExtra("user_id", currentUserId);
+                startActivityForResult(intent, REQUEST_CODE_BUY_CART);
+            }
+        });
+
+        adapter = new gioHangAdapter(this, R.layout.layout_itemcart, data);
+        listView.setAdapter(adapter);
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_BUY_CART && resultCode == RESULT_OK) {
+            int dhMa = data.getIntExtra("dh_ma", -1);
+            SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
+            int userId = prefs.getInt("user_id", -1);
+            Toast.makeText(this, "Đặt hàng thành công!"+ userId, Toast.LENGTH_SHORT).show();
+            if (userId != -1) {
+                ArrayList<cart> cartItems = cartDao.getCartItemsByUserId(userId);
+                for (cart item : cartItems) {
+                    int spMa = item.getSp_ma();
+                    int spSoLuong = item.getSp_soluong();
+                    sp_dondathangDAO.addsp_dondathang(spMa,dhMa, spSoLuong, userId);
+                    cartDao.deleteCartItem(userId, spMa);
+                    Intent intent = new Intent(shoppingCartActivity.this, DonHangttActivity.class);
+                    startActivity(intent);
+                }
+            }
+        }
+    }
+
+
+
 }

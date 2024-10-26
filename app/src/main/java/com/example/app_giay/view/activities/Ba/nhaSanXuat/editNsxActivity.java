@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.app_giay.R;
 import com.example.app_giay.dao.nhaSanXuatDao; // Cập nhật DAO
-import com.example.app_giay.view.activities.Ba.loaiSanPham.editLspActivity;
+
 
 public class editNsxActivity extends AppCompatActivity {
     ImageButton imgbtnBack;
@@ -37,7 +37,7 @@ public class editNsxActivity extends AppCompatActivity {
             return insets;
         });
 
-        edtTenNsx = findViewById(R.id.edtTenNhaSanXuat); // Cập nhật ID
+        edtTenNsx = findViewById(R.id.edtkh_hoten); // Cập nhật ID
         btnSave = findViewById(R.id.btnSave);
         imgbtnBack = findViewById(R.id.imgbtnBack);
         imgbtnBack.setOnClickListener(v -> finish());

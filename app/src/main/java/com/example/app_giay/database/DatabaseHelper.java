@@ -105,6 +105,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "sp_ma INTEGER," +
                 "dh_ma INTEGER," +
                 "sp_dh_soluong INTEGER," +
+                "user_id INTEGER," +
                 "PRIMARY KEY (sp_ma, dh_ma)," +
                 "FOREIGN KEY (sp_ma) REFERENCES sanpham(sp_ma)," +
                 "FOREIGN KEY (dh_ma) REFERENCES dondathang(dh_ma)" +

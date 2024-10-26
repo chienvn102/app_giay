@@ -14,9 +14,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.app_giay.R;
-import com.example.app_giay.dao.loaiSanPhamDao;
 import com.example.app_giay.dao.nhaSanXuatDao; // Update DAO import
-import com.example.app_giay.view.activities.Ba.loaiSanPham.addLspActivity;
+
 
 public class addNsxActivity extends AppCompatActivity { // Rename class to addNsxActivity
     Button btnSave, btnCancel;
@@ -37,7 +36,7 @@ public class addNsxActivity extends AppCompatActivity { // Rename class to addNs
 
         btnSave = findViewById(R.id.btnSave);
         btnCancel = findViewById(R.id.btnCancel);
-        edtTenNhaSanXuat = findViewById(R.id.edtTenNhaSanXuat); // Update EditText ID
+        edtTenNhaSanXuat = findViewById(R.id.edtkh_hoten); // Update EditText ID
         btnCancel.setOnClickListener(view -> {
             finish();
         });
