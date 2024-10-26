@@ -5,25 +5,26 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/anhkhongnen7"
     tools:context=".view.activities.Ba.loaiSanPham.lspActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#edf2fa"
+        android:background="@drawable/anhkhongnen7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/imgbtnBack"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="36dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/trongsuot"
+            app:layout_constraintBottom_toBottomOf="@+id/textView16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView16"
             app:srcCompat="@drawable/baseline_keyboard_arrow_left_24"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -31,12 +32,14 @@
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:fontFamily="@font/aoboshi_one"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/roboto_bold"
             android:text="Loại Sản Phẩm"
+            android:textColor="#C36B4F"
             android:textSize="28sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.187"
+            app:layout_constraintHorizontal_bias="0.057"
             app:layout_constraintStart_toEndOf="@+id/imgbtnBack"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,11 +69,10 @@
             android:id="@+id/imgbtnAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="112dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/bgr_btn_add"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/searchView"
             app:srcCompat="@drawable/baseline_add_24"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -80,6 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Tên Lsp"
+            android:textStyle="bold|italic"
             app:layout_constraintEnd_toStartOf="@+id/textView21"
             app:layout_constraintHorizontal_bias="0.38"
             app:layout_constraintStart_toStartOf="parent"
@@ -92,6 +95,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="88dp"
             android:text="Mô tả"
+            android:textStyle="bold|italic"
             app:layout_constraintEnd_toStartOf="@+id/textView29"
             app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
@@ -102,6 +106,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="28dp"
             android:text="chức năng"
+            android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/searchView" />
 

@@ -16,7 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.app_giay.R;
 import com.example.app_giay.dao.RoleDao;
 import com.example.app_giay.dao.UserDao;
-import com.example.app_giay.model.User;
 
 public class RegisterActivity extends AppCompatActivity {
     ImageButton imgBtnBack;

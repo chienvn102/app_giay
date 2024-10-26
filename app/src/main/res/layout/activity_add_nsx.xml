@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#edf2fa"
+    android:background="@drawable/anhkhongnen7"
     tools:context=".view.activities.Ba.nhaSanXuat.addNsxActivity"> <!-- Update context -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,28 +15,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
         <ImageButton
             android:id="@+id/imgbtnBack"
             android:layout_width="19dp"
             android:layout_height="24dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/trongsuot"
+            app:layout_constraintBottom_toBottomOf="@+id/textView17"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView17"
+            app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/baseline_keyboard_arrow_left_24"
             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
 
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/aoboshi_one"
-            android:text="Thêm mới nhà sản xuất"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Thêm Mới Nhà Sản Xuất"
             android:textSize="28sp"
+            android:textColor="#C36B4F"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.23"
             app:layout_constraintStart_toEndOf="@+id/imgbtnBack"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,13 +73,12 @@
 
                 <EditText
                     android:id="@+id/edtkh_hoten"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Tên nhà sản xuất"
-                android:inputType="text"
-                android:minHeight="48dp"
-                tools:ignore="ExtraText" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    tools:ignore="ExtraText,SpeakableTextPresentCheck" />
             </LinearLayout>
 
             <LinearLayout
@@ -108,6 +112,8 @@
                     android:background="@drawable/brn_bgr"
                     android:fontFamily="@font/aoboshi_one"
                     android:text="Lưu"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -127,6 +133,7 @@
                     android:background="@drawable/btn_res_bgr"
                     android:fontFamily="@font/aoboshi_one"
                     android:text="Hủy"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

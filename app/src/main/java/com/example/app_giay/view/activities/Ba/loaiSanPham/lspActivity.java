@@ -100,7 +100,6 @@ public class lspActivity extends AppCompatActivity {
 
     // Phương thức lọc dữ liệu theo mã sản phẩm
     public void filterByMaSanPham(String query) {
-        query = query.toLowerCase().trim();
         data.clear();  // Xóa dữ liệu hiện tại trước khi lọc
 
         if (query.isEmpty()) {

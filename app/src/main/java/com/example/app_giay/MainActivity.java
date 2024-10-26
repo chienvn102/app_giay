@@ -22,8 +22,8 @@ import com.example.app_giay.dao.trangThaiDao;
 
 public class MainActivity extends AppCompatActivity {
     Button btnSignin, btnRegister;
-        RoleDao roleDao = new RoleDao(this); // Tạo đối tượng RoleDao
-        UserDao userDao = new UserDao(this);
+//        RoleDao roleDao = new RoleDao(this); // Tạo đối tượng RoleDao
+//        UserDao userDao = new UserDao(this);
         trangThaiDao trangThaiDao = new trangThaiDao(this);
 
     DatabaseHelper dbHelper = new DatabaseHelper(this);

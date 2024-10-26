@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.app_giay.R;
 import com.example.app_giay.dao.DonDatHangDAO;
 import com.example.app_giay.dao.khachhangDao;
+import com.example.app_giay.view.activities.Fe.MainFEActivity;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -22,7 +25,8 @@ public class informationActivity extends AppCompatActivity {
     EditText txtName, txtEmail, txtPhone, txtAddress;
     khachhangDao khachhangDao= new khachhangDao(this);
     DonDatHangDAO donDatHangDAO = new DonDatHangDAO(this);
-    Button btnSave;
+    Button btnSave, btnCancel;
+    ImageButton imgbtnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,14 @@ public class informationActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(v -> save());
 
+        imgbtnBack = findViewById(R.id.imgbtnBack);
+        imgbtnBack.setOnClickListener(v -> finish());
+
+        btnCancel = findViewById(R.id.btnCancel);
+        btnCancel.setOnClickListener(v -> {
+            Intent intent = new Intent(informationActivity.this, shoppingCartActivity.class);
+            startActivity(intent);
+        });
 
     }
 
