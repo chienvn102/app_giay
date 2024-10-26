@@ -17,12 +17,14 @@ import com.example.app_giay.database.DatabaseHelper;
 import com.example.app_giay.view.activities.Ba.MainBAActivity;
 import com.example.app_giay.view.activities.RegisterActivity;
 import com.example.app_giay.view.activities.SigninActivity;
+import com.example.app_giay.dao.cartDao;
+import com.example.app_giay.dao.trangThaiDao;
 
 public class MainActivity extends AppCompatActivity {
     Button btnSignin, btnRegister;
         RoleDao roleDao = new RoleDao(this); // Tạo đối tượng RoleDao
         UserDao userDao = new UserDao(this);
-        DonDatHangDAO donDatHangDAO = new DonDatHangDAO(this);
+        trangThaiDao trangThaiDao = new trangThaiDao(this);
 
     DatabaseHelper dbHelper = new DatabaseHelper(this);
     @Override
@@ -48,11 +50,10 @@ public class MainActivity extends AppCompatActivity {
 //         roleDao.addRole("User");
 //         userDao.addUser("admin", "admin", 1, "admin");
 //         userDao.addUser("user", "user", 2, "user");
-//            donDatHangDAO.addDonDatHang("2023-06-01", "Hà Nội", 1, 1);
-//            donDatHangDAO.addDonDatHang("2023-06-02", "Hà Nội", 1, 2);
-//            donDatHangDAO.addDonDatHang("2023-06-03", "Hà Nội", 1, 3);
-//            donDatHangDAO.addDonDatHang("2023-06-04", "Hà Nội", 2, 4);
-//        donDatHangDAO.addDonDatHang("2023-06-04", "Hà Nội", 2, 5);
+//           trangThaiDao.addTrangThai("Da Huy Don Hang");
+//           trangThaiDao.addTrangThai("Dang Xac Nhan");
+//           trangThaiDao.addTrangThai("Dang Giao Hang");
+//           trangThaiDao.addTrangThai("Giao Hang Thanh Cong");
     }
 
     public void register() {

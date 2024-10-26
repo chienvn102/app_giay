@@ -64,7 +64,7 @@
                     android:textSize="22sp" />
 
                 <EditText
-                    android:id="@+id/edtTenNhaSanXuat"
+                    android:id="@+id/edtkh_hoten"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
