@@ -57,7 +57,10 @@ public class DonHangttActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         imgbtnBack = findViewById(R.id.imgbtnBack);
-        imgbtnBack.setOnClickListener(v -> finish());
+        imgbtnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(DonHangttActivity.this, MainFEActivity.class);
+            startActivity(intent);
+        });
 
         imgbtnHome = findViewById(R.id.imgbtnHome);
         imgbtnHome.setOnClickListener(v -> {
