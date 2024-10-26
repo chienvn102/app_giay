@@ -44,9 +44,30 @@ public class donHanAdminAdapter extends ArrayAdapter<donhang> {
 
         donhang currentOrder = data.get(position);
 
-        // Hiển thị mã đơn hàng và trạng thái
+        // Hiển thị mã đơn hàng
         txtdh_ma.setText(String.valueOf(currentOrder.getDhMa()));
-        txtdh_tt.setText(String.valueOf(currentOrder.getTt_ma()));
+
+        // Kiểm tra tt_ma và hiển thị trạng thái tương ứng
+        String statusText;
+        switch (currentOrder.getTt_ma()) {
+            case 1:
+                statusText = "Đã Hủy Đơn Hàng";
+                break;
+            case 2:
+                statusText = "Đang Xác Nhận";
+                break;
+            case 3:
+                statusText = "Đang Giao Hàng";
+                break;
+            case 4:
+                statusText = "Giao Hàng Thành Công";
+                break;
+            default:
+                statusText = "Trạng thái không xác định";
+                break;
+        }
+        txtdh_tt.setText(statusText);
+
         btnEdit.setOnClickListener(view -> {
             // Danh sách các trạng thái đơn hàng
             String[] statuses = {"Đã Hủy Đơn Hàng", "Đang Xác Nhận", "Đang Giao Hàng", "Giao Hàng Thành Công"};
@@ -56,37 +77,16 @@ public class donHanAdminAdapter extends ArrayAdapter<donhang> {
 
             // Đặt Adapter cho danh sách trạng thái
             builder.setItems(statuses, (dialog, which) -> {
-                String selectedStatus = statuses[which];
-
-                // Chọn giá trị tt_ma tương ứng với trạng thái
-                int tt_ma;
-                switch (selectedStatus) {
-                    case "Đã Hủy Đơn Hàng":
-                        tt_ma = 1; // Ví dụ giá trị cho "Đã Hủy Đơn Hàng"
-                        break;
-                    case "Đang Xác Nhận":
-                        tt_ma = 2; // Ví dụ giá trị cho "Đang Xác Nhận"
-                        break;
-                    case "Đang Giao Hàng":
-                        tt_ma = 3; // Ví dụ giá trị cho "Đang Giao Hàng"
-                        break;
-                    case "Giao Hàng Thành Công":
-                        tt_ma = 4; // Ví dụ giá trị cho "Giao Hàng Thành Công"
-                        break;
-                    default:
-                        tt_ma = -1; // Giá trị mặc định nếu không có trạng thái nào khớp
-                        break;
-                }
+                int tt_ma = which + 1; // Giả sử tt_ma bắt đầu từ 1
 
                 int dhMa = Integer.parseInt(currentOrder.getDhMa());
                 donDatHangDAO.updateDonDatHang(dhMa, tt_ma);
 
                 // Cập nhật trạng thái trong đối tượng currentOrder
-                currentOrder.setTt_ma(tt_ma); // Giả sử bạn đã có phương thức này
+                currentOrder.setTt_ma(tt_ma);
 
                 // Cập nhật lại giao diện
                 notifyDataSetChanged();
-
             });
 
             builder.setNegativeButton("Hủy", (dialog, which) -> dialog.cancel());
@@ -95,10 +95,6 @@ public class donHanAdminAdapter extends ArrayAdapter<donhang> {
             dialog.show();
         });
 
-
-
-
-
         // Thiết lập sự kiện OnClick cho txtDon
         txtDon.setOnClickListener(view -> {
             // Tạo AlertDialog để hiển thị chi tiết đơn hàng
@@ -106,14 +102,12 @@ public class donHanAdminAdapter extends ArrayAdapter<donhang> {
             builder.setTitle("Chi tiết đơn hàng");
 
             // Nội dung chi tiết đơn hàng
-            String details = "Mã đơn hàng: " + currentOrder.getDhMa() + "\n" +
-                    "Trạng thái: " + currentOrder.getTt_ma() + "\n" +
-                    "Tên sản phẩm: " + currentOrder.getSpTen() + "\n" +
-                    "Giá: " + currentOrder.getSpGia() + "\n" +
-                    "Mô tả: " + currentOrder.getSpMoTa() + "\n" +
-                    "Nơi giao: " + currentOrder.getDhNoiGiao();
+            StringBuilder details = new StringBuilder();
+            details.append("Mã đơn hàng: ").append(currentOrder.getDhMa()).append("\n")
+                    .append("Trạng thái: ").append(statusText).append("\n")
+                    .append("Nơi giao: ").append(currentOrder.getDhNoiGiao()).append("\n");
 
-            builder.setMessage(details);
+            builder.setMessage(details.toString());
 
             // Nút đóng dialog
             builder.setPositiveButton("Đóng", (dialog, which) -> dialog.dismiss());

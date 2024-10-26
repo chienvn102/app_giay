@@ -58,6 +58,20 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/txtEmptyCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="150dp"
+            android:text="Giỏ hàng đang trống"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+
         <ImageButton
             android:id="@+id/imgbtnBack"
             android:layout_width="30dp"

@@ -35,6 +35,7 @@ public class shoppingCartActivity extends AppCompatActivity {
     TextView txtBuy;
     sp_dondathangDao sp_dondathangDAO = new sp_dondathangDao(this);
     ImageButton imgbtnBack, imgbtnHome, imgbtnDonHang;
+    TextView txtEmptyCart;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,16 +54,33 @@ public class shoppingCartActivity extends AppCompatActivity {
         listView = findViewById(R.id.lvDon);
         cartDao = new cartDao(this);
         data = cartDao.getCartItems(currentUserId);
+        txtEmptyCart = findViewById(R.id.txtEmptyCart);
+        data = cartDao.getCartItems(currentUserId);
+
+        // Kiểm tra xem giỏ hàng có sản phẩm không
+        if (data.isEmpty()) {
+            txtEmptyCart.setVisibility(View.VISIBLE); // Hiện thông báo
+            listView.setVisibility(View.GONE); // Ẩn ListView
+        } else {
+            txtEmptyCart.setVisibility(View.GONE); // Ẩn thông báo
+            listView.setVisibility(View.VISIBLE); // Hiện ListView
+        }
 
         txtBuy = findViewById(R.id.txtBuy);
         txtBuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(shoppingCartActivity.this, informationActivity.class);
-                intent.putExtra("user_id", currentUserId);
-                startActivityForResult(intent, REQUEST_CODE_BUY_CART);
+                // Kiểm tra nếu giỏ hàng rỗng
+                if (data.isEmpty()) {
+                    Toast.makeText(shoppingCartActivity.this, "Giỏ hàng hiện tại không có sản phẩm!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(shoppingCartActivity.this, informationActivity.class);
+                    intent.putExtra("user_id", currentUserId);
+                    startActivityForResult(intent, REQUEST_CODE_BUY_CART);
+                }
             }
         });
+
 
         adapter = new gioHangAdapter(this, R.layout.layout_itemcart, data);
         listView.setAdapter(adapter);
